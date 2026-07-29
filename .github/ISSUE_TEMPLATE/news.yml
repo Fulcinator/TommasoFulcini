@@ -4,6 +4,17 @@ title: "[News] "
 labels:
   - news
 body:
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      description: Draft items stay in GitHub only. Published items appear on the homepage.
+      options:
+        - Draft
+        - Published
+    validations:
+      required: true
+
   - type: input
     id: date
     attributes:
@@ -67,4 +78,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Submitting this issue updates the homepage news data automatically through GitHub Actions.
+        Workflow:
+        - create the issue as `Draft` while you are preparing it
+        - switch it to `Published` and save the issue when you want it on the homepage
+        - edit the same issue later to update the homepage entry
+        - close the issue, or switch it back to `Draft`, to remove it from the homepage

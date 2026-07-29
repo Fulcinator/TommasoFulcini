@@ -7,6 +7,8 @@ on:
       - edited
       - reopened
       - labeled
+      - unlabeled
+      - closed
 
 permissions:
   contents: write
@@ -16,8 +18,11 @@ jobs:
   sync-news:
     if: >
       github.event.issue.pull_request == null &&
-      contains(join(github.event.issue.labels.*.name, ','), 'news') &&
-      (github.event.action != 'labeled' || github.event.label.name == 'news')
+      (
+        contains(join(github.event.issue.labels.*.name, ','), 'news') ||
+        (github.event.action == 'labeled' && github.event.label.name == 'news') ||
+        (github.event.action == 'unlabeled' && github.event.label.name == 'news')
+      )
     runs-on: ubuntu-latest
 
     steps:

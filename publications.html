@@ -9,6 +9,7 @@
       content="Publication list for Tommaso Fulcini, based on public IRIS records."
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="publications-data.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body class="page">
@@ -41,187 +42,34 @@
             <p class="hero-kicker">IRIS snapshot</p>
             <h1>Publications</h1>
             <p class="hero-lead">
-              This page mirrors the public IRIS profile as a manual snapshot dated July 28, 2026.
-              It remains structured for a later automated update flow.
+              This page was seeded from the public IRIS profile as of July 28, 2026 and is now
+              maintained from a local repository file so it can be updated directly over time.
             </p>
           </div>
 
           <dl class="page-meta-strip reveal">
             <div>
               <dt>Source</dt>
-              <dd>Politecnico di Torino IRIS</dd>
+              <dd>Local repository file</dd>
             </div>
             <div>
               <dt>Items listed</dt>
-              <dd>21 publications</dd>
+              <dd id="publications-count">Loading...</dd>
             </div>
             <div>
               <dt>Update mode</dt>
-              <dd>Manual snapshot</dd>
+              <dd><code>publications-data.js</code></dd>
             </div>
           </dl>
         </div>
       </section>
 
       <section class="band">
-        <div class="shell year-list">
-          <div class="year-block reveal">
-            <div class="year-stamp">2026</div>
-            <div class="entry-stack">
-              <article class="entry-card">
-                <p class="entry-meta">Conference volume · PROFES 2025</p>
-                <h3>Enhancing Software Maintainability through LLM-Assisted Code Refactoring</h3>
-                <p>
-                  Tommaso Fulcini, Riccardo Coppola, Flavio Giobergia, Amirali Changizi,
-                  Meelad Dashti, Kimia Dorrani, Domenico Amalfitano, Damiano Distante,
-                  Filippo Ricca.
-                </p>
-              </article>
-            </div>
+        <div class="shell">
+          <div class="data-source-note reveal">
+            Update this page by editing <code>publications-data.js</code> in the repository.
           </div>
-
-          <div class="year-block reveal">
-            <div class="year-stamp">2025</div>
-            <div class="entry-stack">
-              <article class="entry-card">
-                <p class="entry-meta">In press · IDE 2025</p>
-                <h3>A Prototype VS Code Extension to Improve Web Accessible Development</h3>
-                <p>Elisa Cali, Tommaso Fulcini, Riccardo Coppola, Lorenzo Laudadio, Marco Torchiano.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">In press · QUATIC 2025</p>
-                <h3>An Analysis of the Test Repair Capability of LLMs in Android GUI Testing</h3>
-                <p>
-                  Alessandro Fedriga, Tommaso Fulcini, Riccardo Coppola, Domenico Amalfitano,
-                  Damiano Distante, Filippo Ricca.
-                </p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">In press · Gamify 2025</p>
-                <h3>GAppium: A Framework to Enact Gamification Mechanics in Appium Inspector</h3>
-                <p>Lorenzo Laudadio, Riccardo Coppola, Marco Torchiano, Tommaso Fulcini.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Journal · Proceedings of the ACM on Software Engineering</p>
-                <h3>Gamifying Testing in IntelliJ: A Replicability Study</h3>
-                <p>Philipp Straubinger, Tommaso Fulcini, Giacomo Garaccione, Luca Ardito, Gordon Fraser.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Journal · Journal of Systems and Software</p>
-                <h3>Kotlin Assimilating the Android Ecosystem: An Appraisal of Diffusion and Impact on Maintainability</h3>
-                <p>Riccardo Coppola, Tommaso Fulcini, Luca Ardito, Marco Torchiano.</p>
-              </article>
-            </div>
-          </div>
-
-          <div class="year-block reveal">
-            <div class="year-stamp">2024</div>
-            <div class="entry-stack">
-              <article class="entry-card">
-                <p class="entry-meta">Conference · QUATIC 2024</p>
-                <h3>Conceptualization of Multi-User Collaborative GUI-Testing for Web Applications</h3>
-                <p>Riccardo Coppola, Tommaso Fulcini, Marco Torchiano.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Workshop · IDE 2024</p>
-                <h3>Gamified GUI Testing with Selenium in the IntelliJ IDE: A Prototype Plugin</h3>
-                <p>Giacomo Garaccione, Tommaso Fulcini, Paolo Stefanut Bodnarescul, Riccardo Coppola, Luca Ardito.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Workshop · GAS 2024</p>
-                <h3>How to Measure Game Testing: a Survey of Coverage Metrics</h3>
-                <p>Riccardo Coppola, Tommaso Fulcini, Serenella Manzi, Francesco Strada.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Workshop · IDE 2024</p>
-                <h3>IntelliGame in Action: An Experience Report on Gamifying JavaScript Unit Tests</h3>
-                <p>Philipp Straubinger, Tommaso Fulcini, Gordon Fraser, Marco Torchiano.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Conference · GEM 2024</p>
-                <h3>Know Your Bugs: A Survey of Issues in Automated Game Testing Literature</h3>
-                <p>Riccardo Coppola, Tommaso Fulcini, Francesco Strada.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Journal · IEEE Transactions on Software Engineering</p>
-                <h3>On Effectiveness and Efficiency of Gamified Exploratory GUI Testing</h3>
-                <p>Riccardo Coppola, Tommaso Fulcini, Luca Ardito, Marco Torchiano, Emil Alegroth.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Poster · ICSE 2024</p>
-                <h3>Poster: Kotlin Assimilating the Android Ecosystem - An Appraisal of Diffusion and Impact on Maintainability</h3>
-                <p>Riccardo Coppola, Tommaso Fulcini, Marco Torchiano.</p>
-              </article>
-            </div>
-          </div>
-
-          <div class="year-block reveal">
-            <div class="year-stamp">2023</div>
-            <div class="entry-stack">
-              <article class="entry-card">
-                <p class="entry-meta">Book chapter · Springer</p>
-                <h3>A Framework for the Gamification of GUI Testing</h3>
-                <p>Riccardo Coppola, Luca Ardito, Tommaso Fulcini, Giacomo Garaccione, Marco Torchiano, Maurizio Morisio.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Journal · ACM Computing Surveys</p>
-                <h3>A Review on Tools, Mechanics, Benefits, and Challenges of Gamified Software Testing</h3>
-                <p>Tommaso Fulcini, Riccardo Coppola, Luca Ardito, Marco Torchiano.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Workshop · ICSTW 2023</p>
-                <h3>An Analysis of Widget Layout Attributes to Support Android GUI-based Testing</h3>
-                <p>Tommaso Fulcini, Riccardo Coppola, Marco Torchiano, Luca Ardito.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Workshop · Gamify 2023</p>
-                <h3>Is ChatGPT Capable of Crafting Gamification Strategies for Software Engineering Tasks?</h3>
-                <p>Tommaso Fulcini, Marco Torchiano.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Workshop · GAS 2023</p>
-                <h3>Survival of the Tested: Gamified Unit Testing Inspired by Battle Royale</h3>
-                <p>Antonio Materazzo, Tommaso Fulcini, Riccardo Coppola, Marco Torchiano.</p>
-              </article>
-            </div>
-          </div>
-
-          <div class="year-block reveal">
-            <div class="year-stamp">2022</div>
-            <div class="entry-stack">
-              <article class="entry-card">
-                <p class="entry-meta">Workshop · ICSTW 2022</p>
-                <h3>Gamified Exploratory GUI Testing of Web Applications: a Preliminary Evaluation</h3>
-                <p>Tommaso Fulcini, Luca Ardito.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Workshop · Gamify 2022</p>
-                <h3>GERRY: A Gamified Browser Tool for GUI Testing</h3>
-                <p>Giacomo Garaccione, Tommaso Fulcini, Marco Torchiano.</p>
-              </article>
-
-              <article class="entry-card">
-                <p class="entry-meta">Workshop · A-TEST 2022</p>
-                <h3>Guidelines for GUI Testing Maintenance: A Linter for Test Smell Detection</h3>
-                <p>Tommaso Fulcini, Giacomo Garaccione, Riccardo Coppola, Luca Ardito, Marco Torchiano.</p>
-              </article>
-            </div>
-          </div>
+          <div class="year-list" id="publications-list"></div>
         </div>
       </section>
     </main>

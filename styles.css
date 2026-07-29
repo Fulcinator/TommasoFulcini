@@ -179,6 +179,10 @@ li {
   pointer-events: none;
 }
 
+.page:not(.page-home) .page-hero::before {
+  background: linear-gradient(180deg, rgba(15, 118, 110, 0.05), transparent 60%);
+}
+
 .home-hero {
   min-height: calc(100vh - 4.8rem);
   display: flex;
@@ -414,6 +418,16 @@ li {
   box-shadow: var(--shadow);
 }
 
+.data-source-note {
+  margin-bottom: 1.25rem;
+  color: var(--muted);
+}
+
+.data-source-note code {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 .news-date {
   color: var(--accent-warm);
   font-size: 0.86rem;
@@ -481,6 +495,13 @@ li {
 .button-secondary {
   background: rgba(255, 255, 255, 0.72);
   border-color: var(--line);
+}
+
+.button-small {
+  min-height: 2.4rem;
+  padding: 0 0.8rem;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .hero-tags {
@@ -778,6 +799,22 @@ li {
   padding: 1rem 1.05rem;
 }
 
+.publication-card {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.publication-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.publication-authors {
+  color: var(--muted);
+}
+
 .entry-meta {
   color: var(--accent-cool);
   font-size: 0.85rem;
@@ -908,6 +945,10 @@ li {
 
   .page-meta-strip {
     grid-template-columns: 1fr;
+  }
+
+  .publication-head {
+    flex-direction: column;
   }
 
   .hero-rail {

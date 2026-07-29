@@ -6,6 +6,7 @@ Static multipage personal site prepared for GitHub Pages.
 
 - `index.html`: homepage with current role and research themes
 - `publications.html`: publication list
+- `publications-data.js`: local publication data and BibTeX entries
 - `teaching.html`: teaching page
 - `service.html`: professional service page
 - `other.html`: additional interests page
@@ -52,8 +53,14 @@ If you use a different repository name, GitHub Pages will publish it under:
 ## Notes
 
 - `propic.png` is used as the local profile image.
-- The publication page is currently a manual snapshot of the public IRIS record dated July 28, 2026.
+- The publication page is rendered from `publications-data.js`, which is the local file to edit when adding or updating publications.
+- Each publication entry includes a `bibtex` field used by the page's `Copy BibTeX` button.
 - Homepage news is rendered from `news-data.js`.
 - News can now be submitted through the GitHub issue form defined in `.github/ISSUE_TEMPLATE/news.yml`.
 - The workflow in `.github/workflows/sync-news-from-issue.yml` rewrites `news-data.js`, commits the change, and lets GitHub Pages redeploy from `main`.
+- News issue lifecycle:
+  - `Draft` means the issue is saved in GitHub but not shown on the homepage.
+  - `Published` means the issue is rendered on the homepage news section.
+  - editing a published issue updates the homepage entry.
+  - closing the issue, or changing it back to `Draft`, removes it from the homepage.
 - The ORCID footer icon currently points to an ORCID registry search because a verified personal ORCID profile URL was not found in the public sources used here.

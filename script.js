@@ -1,6 +1,19 @@
 const progress = document.querySelector(".scroll-progress span");
 const revealItems = document.querySelectorAll(".reveal");
 const newsList = document.querySelector("#news-list");
+const publicationsList = document.querySelector("#publications-list");
+const publicationsCount = document.querySelector("#publications-count");
+
+const escapeHtml = (value) =>
+  String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+
+const emphasizeOwnName = (authors) =>
+  escapeHtml(authors).replaceAll("Tommaso Fulcini", "<strong>Tommaso Fulcini</strong>");
 
 if (progress) {
   const updateProgress = () => {
@@ -69,4 +82,93 @@ if (newsList) {
       })
       .join("");
   }
+}
+
+if (publicationsList) {
+  const publications = Array.isArray(window.publicationsData) ? [...window.publicationsData] : [];
+  const groupedByYear = publications.reduce((accumulator, publication) => {
+    const year = String(publication.year);
+    if (!accumulator.has(year)) {
+      accumulator.set(year, []);
+    }
+    accumulator.get(year).push(publication);
+    return accumulator;
+  }, new Map());
+
+  const orderedYears = [...groupedByYear.keys()].sort((left, right) => Number(right) - Number(left));
+  publicationsList.innerHTML = orderedYears
+    .map((year) => {
+      const items = groupedByYear
+        .get(year)
+        .map((publication) => {
+          const authors = Array.isArray(publication.authors)
+            ? publication.authors.join(", ")
+            : publication.authors;
+
+          return `
+            <article class="entry-card publication-card reveal">
+              <div class="publication-head">
+                <div>
+                  <p class="entry-meta">${escapeHtml(publication.meta)}</p>
+                  <h3>${escapeHtml(publication.title)}</h3>
+                </div>
+                <button
+                  class="button button-secondary button-small copy-bibtex-button"
+                  type="button"
+                  data-publication-key="${escapeHtml(publication.key)}"
+                >
+                  Copy BibTeX
+                </button>
+              </div>
+              <p class="publication-authors">${emphasizeOwnName(authors)}</p>
+            </article>
+          `;
+        })
+        .join("");
+
+      return `
+        <div class="year-block">
+          <div class="year-stamp">${escapeHtml(year)}</div>
+          <div class="entry-stack">${items}</div>
+        </div>
+      `;
+    })
+    .join("");
+
+  if (publicationsCount) {
+    publicationsCount.textContent = String(publications.length);
+  }
+
+  publicationsList.querySelectorAll(".reveal").forEach((item) => {
+    item.classList.add("is-visible");
+  });
+
+  publicationsList.addEventListener("click", async (event) => {
+    const button = event.target.closest(".copy-bibtex-button");
+    if (!button) {
+      return;
+    }
+
+    const publication = publications.find(
+      (item) => item.key === button.dataset.publicationKey
+    );
+
+    if (!publication) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(publication.bibtex);
+      const previousLabel = button.textContent;
+      button.textContent = "Copied";
+      window.setTimeout(() => {
+        button.textContent = previousLabel;
+      }, 1400);
+    } catch (error) {
+      button.textContent = "Copy failed";
+      window.setTimeout(() => {
+        button.textContent = "Copy BibTeX";
+      }, 1400);
+    }
+  });
 }
