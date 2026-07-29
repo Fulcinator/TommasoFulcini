@@ -19,10 +19,19 @@ if (!issue) {
 
 const extractSections = (body) => {
   const sections = {};
-  const regex = /^###\s+(.+?)\r?\n([\s\S]*?)(?=^###\s+|\s*$)/gm;
+  const headingRegex = /^###\s+(.+?)\r?\n([\s\S]*?)(?=^###\s+|\s*$)/gm;
   let match;
 
-  while ((match = regex.exec(body)) !== null) {
+  while ((match = headingRegex.exec(body)) !== null) {
+    sections[match[1].trim()] = match[2].trim();
+  }
+
+  if (Object.keys(sections).length > 0) {
+    return sections;
+  }
+
+  const boldLabelRegex = /^\*\*(.+?)\*\*\r?\n([\s\S]*?)(?=^\*\*.+?\*\*\r?\n|\s*$)/gm;
+  while ((match = boldLabelRegex.exec(body)) !== null) {
     sections[match[1].trim()] = match[2].trim();
   }
 
@@ -35,7 +44,7 @@ const cleanField = (value) => {
   }
 
   const cleaned = value.replace(/\r/g, "").trim();
-  if (cleaned === "_No response_") {
+  if (cleaned === "_No response_" || cleaned === "*No response*") {
     return "";
   }
 
