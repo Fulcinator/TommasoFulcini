@@ -1,0 +1,70 @@
+name: News item
+description: Submit a short update to be published in the homepage news section.
+title: "[News] "
+labels:
+  - news
+body:
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      description: Use the publication or event date in YYYY-MM-DD format.
+      placeholder: 2026-07-29
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - Publication
+        - Talk
+        - Committee
+        - Workshop
+        - Award
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: entry_title
+    attributes:
+      label: Title
+      description: Short headline shown in the news feed.
+      placeholder: Paper accepted at ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Optional one-sentence context shown under the headline.
+      placeholder: Optional context for the update.
+      render: markdown
+    validations:
+      required: false
+
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: Optional URL to the paper, conference page, slides, or announcement.
+      placeholder: https://...
+    validations:
+      required: false
+
+  - type: input
+    id: link_label
+    attributes:
+      label: Link label
+      description: Optional short label for the link.
+      placeholder: Conference page
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        Submitting this issue updates the homepage news data automatically through GitHub Actions.

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: General website changes
+    url: https://github.com/Fulcinator/fulcinator.github.io
+    about: Open a standard development issue in the repository for non-news site updates.
