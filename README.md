@@ -7,6 +7,7 @@ Static multipage personal site prepared for GitHub Pages.
 - `index.html`: homepage with current role and research themes
 - `publications.html`: publication list
 - `publications-data.js`: local publication data and BibTeX entries
+- `scripts/sync-publications-from-iris.mjs`: IRIS import script for new publications
 - `teaching.html`: teaching page
 - `service.html`: professional service page
 - `other.html`: additional interests page
@@ -16,6 +17,7 @@ Static multipage personal site prepared for GitHub Pages.
 - `scripts/sync-news-from-issue.mjs`: GitHub Actions sync script for news issues
 - `.github/ISSUE_TEMPLATE/news.yml`: issue form for submitting news
 - `.github/workflows/sync-news-from-issue.yml`: workflow that publishes issue submissions
+- `.github/workflows/sync-publications-from-iris.yml`: weekly workflow that imports new IRIS publications
 - `.github/workflows/deploy.yml`: GitHub Pages deployment workflow
 
 ## Publish on GitHub Pages
@@ -55,6 +57,8 @@ If you use a different repository name, GitHub Pages will publish it under:
 - `propic.png` is used as the local profile image.
 - The publication page is rendered from `publications-data.js`, which is the local file to edit when adding or updating publications.
 - Each publication entry includes a `bibtex` field used by the page's `Copy BibTeX` button.
+- New IRIS publications can be imported automatically by the workflow in `.github/workflows/sync-publications-from-iris.yml`.
+- The IRIS sync runs weekly every Monday at 04:17 UTC and can also be started manually with `workflow_dispatch`.
 - Homepage news is rendered from `news-data.js`.
 - News can now be submitted through the GitHub issue form defined in `.github/ISSUE_TEMPLATE/news.yml`.
 - The workflow in `.github/workflows/sync-news-from-issue.yml` rewrites `news-data.js`, commits the change, and lets GitHub Pages redeploy from `main`.
