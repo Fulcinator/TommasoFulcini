@@ -9,6 +9,9 @@ on:
       - labeled
       - unlabeled
       - closed
+  workflow_dispatch:
+  schedule:
+    - cron: "11 5 * * 1"
 
 permissions:
   contents: write
@@ -17,11 +20,14 @@ permissions:
 jobs:
   sync-news:
     if: >
+      github.event_name != 'issues' ||
+      (
       github.event.issue.pull_request == null &&
       (
         contains(join(github.event.issue.labels.*.name, ','), 'news') ||
         (github.event.action == 'labeled' && github.event.label.name == 'news') ||
         (github.event.action == 'unlabeled' && github.event.label.name == 'news')
+      )
       )
     runs-on: ubuntu-latest
 
@@ -36,6 +42,8 @@ jobs:
         run: node scripts/sync-news-from-issue.mjs
         env:
           GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit changes
         run: |
@@ -52,7 +60,11 @@ jobs:
               exit 0
             fi
 
-            git commit -m "Sync news from issue #${{ github.event.issue.number }}"
+            if [ "${{ github.event_name }}" = "issues" ]; then
+              git commit -m "Sync news from issue #${{ github.event.issue.number }}"
+            else
+              git commit -m "Rebuild news from issues"
+            fi
 
             if git push origin HEAD:main; then
               exit 0

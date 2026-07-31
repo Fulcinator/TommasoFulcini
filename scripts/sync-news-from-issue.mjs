@@ -3,19 +3,10 @@ import path from "node:path";
 import vm from "node:vm";
 
 const eventPath = process.env.GITHUB_EVENT_PATH;
+const repository = process.env.GITHUB_REPOSITORY;
+const token = process.env.GITHUB_TOKEN ?? "";
 
-if (!eventPath) {
-  throw new Error("GITHUB_EVENT_PATH is not available.");
-}
-
-const event = JSON.parse(fs.readFileSync(eventPath, "utf8"));
-const issue = event.issue;
-const action = event.action;
-const changedLabel = event.label?.name ?? "";
-
-if (!issue) {
-  throw new Error("No issue payload found in event.");
-}
+const event = eventPath ? JSON.parse(fs.readFileSync(eventPath, "utf8")) : {};
 
 const extractSections = (body) => {
   const normalized = (body ?? "").replace(/\r/g, "");
@@ -75,44 +66,33 @@ const cleanField = (value) => {
   return cleaned.replace(/\n+/g, " ").trim();
 };
 
-const sections = extractSections(issue.body ?? "");
-const status = cleanField(sections.Status);
-const date = cleanField(sections.Date);
-const type = cleanField(sections.Type);
-const title = cleanField(sections.Title);
-const details = cleanField(sections.Details);
-const link = cleanField(sections.Link);
-const linkLabel = cleanField(sections["Link label"]);
+const parseIssueToNewsItem = (issue) => {
+  const sections = extractSections(issue.body ?? "");
+  const status = cleanField(sections.Status);
+  const date = cleanField(sections.Date);
+  const type = cleanField(sections.Type);
+  const title = cleanField(sections.Title);
+  const details = cleanField(sections.Details);
+  const link = cleanField(sections.Link);
+  const linkLabel = cleanField(sections["Link label"]);
+  const hasNewsLabel = Array.isArray(issue.labels)
+    ? issue.labels.some((label) => label.name === "news")
+    : false;
 
-const hasNewsLabel = Array.isArray(issue.labels)
-  ? issue.labels.some((label) => label.name === "news")
-  : false;
+  if (issue.state !== "open" || !hasNewsLabel || status !== "Published") {
+    return null;
+  }
 
-const shouldRemove =
-  issue.state === "closed" ||
-  status !== "Published" ||
-  (!hasNewsLabel && !(action === "labeled" && changedLabel === "news"));
-
-const dataPath = path.join(process.cwd(), "news-data.js");
-const rawData = fs.readFileSync(dataPath, "utf8");
-const sandbox = { window: {} };
-vm.runInNewContext(rawData, sandbox);
-
-const currentItems = Array.isArray(sandbox.window.newsItems) ? sandbox.window.newsItems : [];
-
-const mergedItems = currentItems.filter((item) => item.issueNumber !== issue.number);
-
-if (!shouldRemove) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
-    throw new Error(`Invalid or missing news date: "${date}"`);
+    throw new Error(`Invalid or missing news date in issue #${issue.number}: "${date}"`);
   }
 
   if (!type) {
-    throw new Error("Missing news type.");
+    throw new Error(`Missing news type in issue #${issue.number}.`);
   }
 
   if (!title) {
-    throw new Error("Missing news title.");
+    throw new Error(`Missing news title in issue #${issue.number}.`);
   }
 
   const nextItem = {
@@ -137,19 +117,82 @@ if (!shouldRemove) {
     nextItem.linkLabel = "More";
   }
 
-  mergedItems.push(nextItem);
-}
+  return nextItem;
+};
 
-mergedItems.sort((left, right) => {
-  const dateDiff = new Date(right.date) - new Date(left.date);
-  if (dateDiff !== 0) {
-    return dateDiff;
+const fetchIssuesPage = async (page) => {
+  if (!repository) {
+    return null;
   }
 
-  const rightIssue = right.issueNumber ?? 0;
-  const leftIssue = left.issueNumber ?? 0;
-  return rightIssue - leftIssue;
-});
+  const headers = {
+    Accept: "application/vnd.github+json",
+    "User-Agent": "TommasoFulciniSiteSync/1.0",
+  };
+
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  const response = await fetch(
+    `https://api.github.com/repos/${repository}/issues?state=open&labels=news&per_page=100&page=${page}`,
+    { headers }
+  );
+
+  if (!response.ok) {
+    throw new Error(`GitHub API request failed: ${response.status} ${response.statusText}`);
+  }
+
+  return response.json();
+};
+
+const listNewsIssues = async () => {
+  if (!repository) {
+    const fallbackIssue = event.issue;
+    if (!fallbackIssue) {
+      throw new Error("No repository context or issue payload available.");
+    }
+    return [fallbackIssue];
+  }
+
+  const issues = [];
+  let page = 1;
+  while (true) {
+    const batch = await fetchIssuesPage(page);
+    if (!Array.isArray(batch) || batch.length === 0) {
+      break;
+    }
+
+    issues.push(...batch.filter((item) => !item.pull_request));
+    if (batch.length < 100) {
+      break;
+    }
+
+    page += 1;
+  }
+
+  return issues;
+};
+
+const dataPath = path.join(process.cwd(), "news-data.js");
+const rawData = fs.readFileSync(dataPath, "utf8");
+const sandbox = { window: {} };
+vm.runInNewContext(rawData, sandbox);
+
+const issues = await listNewsIssues();
+const mergedItems = issues
+  .map(parseIssueToNewsItem)
+  .filter(Boolean)
+  .sort((left, right) => {
+    const dateDiff = new Date(right.date) - new Date(left.date);
+    if (dateDiff !== 0) {
+      return dateDiff;
+    }
+
+    return (right.issueNumber ?? 0) - (left.issueNumber ?? 0);
+  });
 
 const serialized = `window.newsItems = ${JSON.stringify(mergedItems, null, 2)};\n`;
 fs.writeFileSync(dataPath, serialized, "utf8");
+
+console.log(`Rebuilt news-data.js from ${issues.length} open news issue(s); published entries: ${mergedItems.length}.`);
