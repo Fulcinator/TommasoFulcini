@@ -25,6 +25,7 @@ const translations = {
     copy_bibtex: { en: "Copy BibTeX", it: "Copia BibTeX" },
     copied: { en: "Copied", it: "Copiato" },
     copy_failed: { en: "Copy failed", it: "Copia non riuscita" },
+    slides_label: { en: "Slides", it: "Slide" },
     news_empty: { en: "No news items yet.", it: "Nessuna notizia al momento." },
     msc_computer_engineering: { en: "M.Sc. in Computer Engineering", it: "Laurea Magistrale in Ingegneria Informatica" },
     bsc_computer_engineering: { en: "B.Sc. in Computer Engineering", it: "Laurea in Ingegneria Informatica" },
@@ -312,6 +313,10 @@ const renderNews = () => {
         item.link && item.linkLabel
           ? `<a href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}>${escapeHtml(item.linkLabel)}</a>`
           : "";
+      const slidesMarkup = item.slides
+        ? `<a href="${item.slides}" ${item.slides.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}>${escapeHtml(translate("slides_label"))}</a>`
+        : "";
+      const actions = [linkMarkup, slidesMarkup].filter(Boolean).join("");
 
       return `
         <article class="news-item">
@@ -320,7 +325,7 @@ const renderNews = () => {
             <p class="news-type">${escapeHtml(translateNewsType(item.type))}</p>
             <h3>${escapeHtml(item.title)}</h3>
             ${item.details ? `<p>${escapeHtml(item.details)}</p>` : ""}
-            ${linkMarkup ? `<div class="news-link">${linkMarkup}</div>` : ""}
+            ${actions ? `<div class="news-link">${actions}</div>` : ""}
           </div>
         </article>
       `;

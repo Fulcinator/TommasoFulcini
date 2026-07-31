@@ -160,19 +160,6 @@ window.publicationsData = [
 }`
   },
   {
-    key: "laudadio2025gappiumreport",
-    year: 2025,
-    meta: "Report · IRIS entry",
-    title: "GAppium",
-    authors: ["Lorenzo Laudadio", "Riccardo Coppola", "Marco Torchiano", "Tommaso Fulcini"],
-    bibtex: `@misc{laudadio2025gappiumreport,
-  author = {Lorenzo Laudadio and Riccardo Coppola and Marco Torchiano and Tommaso Fulcini},
-  title  = {GAppium},
-  year   = {2025},
-  note   = {Report entry in IRIS}
-}`
-  },
-  {
     key: "straubinger2025intellijreplication",
     year: 2025,
     meta: "Journal · Proceedings of the ACM on Software Engineering",

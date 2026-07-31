@@ -577,6 +577,9 @@ li {
 
 .news-link {
   margin-top: 0.55rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
 }
 
 .news-link a {

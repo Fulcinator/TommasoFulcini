@@ -75,6 +75,15 @@ body:
     validations:
       required: false
 
+  - type: input
+    id: slides
+    attributes:
+      label: Slides
+      description: Optional URL to slides or downloadable PDF.
+      placeholder: slides/my-talk.pdf
+    validations:
+      required: false
+
   - type: markdown
     attributes:
       value: |

@@ -75,6 +75,7 @@ const parseIssueToNewsItem = (issue) => {
   const details = cleanField(sections.Details);
   const link = cleanField(sections.Link);
   const linkLabel = cleanField(sections["Link label"]);
+  const slides = cleanField(sections.Slides);
   const hasNewsLabel = Array.isArray(issue.labels)
     ? issue.labels.some((label) => label.name === "news")
     : false;
@@ -103,6 +104,7 @@ const parseIssueToNewsItem = (issue) => {
     details,
     link,
     linkLabel,
+    slides,
     sourceIssueUrl: issue.html_url,
   };
 
@@ -115,6 +117,10 @@ const parseIssueToNewsItem = (issue) => {
     delete nextItem.linkLabel;
   } else if (!nextItem.linkLabel) {
     nextItem.linkLabel = "More";
+  }
+
+  if (!nextItem.slides) {
+    delete nextItem.slides;
   }
 
   return nextItem;
