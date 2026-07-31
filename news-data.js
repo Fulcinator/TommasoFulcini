@@ -11,6 +11,7 @@ window.newsItems = [
     "date": "2026-07-22",
     "type": "Talk",
     "title": "I was invited to have a talk about an agentic project at AI4I @ OGR",
+    "slides": "slides/26_07_22_OGR_LABBGEN_presentation.pdf",
     "sourceIssueUrl": "https://github.com/Fulcinator/TommasoFulcini/issues/3"
   }
 ];
