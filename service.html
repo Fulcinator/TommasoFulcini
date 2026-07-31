@@ -4,14 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Professional Service | Tommaso Fulcini</title>
-    <meta
-      name="description"
-      content="Conference and workshop service roles for Tommaso Fulcini."
-    />
+    <meta name="description" content="Conference and workshop service roles for Tommaso Fulcini." />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
-  <body class="page">
+  <body class="page" data-page="service">
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
     <header class="site-header">
@@ -20,17 +17,41 @@
           <span class="site-brand-mark">TF</span>
           <span class="site-brand-copy">
             <strong>Tommaso Fulcini</strong>
-            <small>Software Engineering Research</small>
+            <small data-i18n="brand_subtitle">Software Engineering Research</small>
           </span>
         </a>
 
-        <nav class="site-nav" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="publications.html">Publications</a>
-          <a href="teaching.html">Teaching</a>
-          <a class="is-current" href="service.html" aria-current="page">Service</a>
-          <a href="other.html">Other</a>
-        </nav>
+        <div class="site-header-actions">
+          <nav class="site-nav" aria-label="Primary" data-i18n-aria-label="primary_nav_label">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="publications.html" data-i18n="nav_publications">Publications</a>
+            <a href="teaching.html" data-i18n="nav_teaching">Teaching</a>
+            <a class="is-current" href="service.html" aria-current="page" data-i18n="nav_service">Service</a>
+            <a href="other.html" data-i18n="nav_other">Other</a>
+          </nav>
+
+          <div class="site-controls">
+            <div class="language-switch" role="group" data-i18n-aria-label="lang_control_label">
+              <button class="control-chip" type="button" data-lang-option="en" aria-pressed="false">EN</button>
+              <button class="control-chip" type="button" data-lang-option="it" aria-pressed="false">IT</button>
+            </div>
+
+            <button
+              class="theme-toggle"
+              type="button"
+              data-theme-toggle
+              data-i18n-aria-label="theme_toggle_label"
+              data-i18n-title="theme_toggle_label"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 3.75v1.5M12 18.75v1.5M4.75 12h-1.5M20.75 12h-1.5M6.88 6.88 5.82 5.82M18.18 18.18l-1.06-1.06M17.12 6.88l1.06-1.06M5.82 18.18l1.06-1.06M15.75 12A3.75 3.75 0 1 1 8.25 12a3.75 3.75 0 0 1 7.5 0Z"
+                />
+              </svg>
+              <span class="visually-hidden" data-i18n="theme_toggle_label">Toggle dark mode</span>
+            </button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -38,26 +59,25 @@
       <section class="page-hero inner-hero">
         <div class="shell inner-hero-shell">
           <div class="hero-copy reveal">
-            <p class="hero-kicker">conf.researchr record</p>
-            <h1>Professional service</h1>
-            <p class="hero-lead">
-              Selected conference and workshop service roles visible in public conf.researchr
-              pages as of July 28, 2026.
+            <p class="hero-kicker" data-i18n="service_kicker">Academic community</p>
+            <h1 data-i18n="service_title">Professional service</h1>
+            <p class="hero-lead" data-i18n="service_lead">
+              Selected conference and workshop service roles across software engineering venues.
             </p>
           </div>
 
           <dl class="page-meta-strip reveal">
             <div>
-              <dt>Main sources</dt>
+              <dt data-i18n="service_venues_label">Venues</dt>
               <dd>ICSE, FSE, ASE, ICST, ISSTA, EASE</dd>
             </div>
             <div>
-              <dt>Role types</dt>
-              <dd>PC, organizing committee, chairing</dd>
+              <dt data-i18n="service_role_types_label">Role types</dt>
+              <dd data-i18n="service_role_types_value">PC, organizing committee, chairing</dd>
             </div>
             <div>
-              <dt>Scope</dt>
-              <dd>Public conference service</dd>
+              <dt data-i18n="service_scope_label">Scope</dt>
+              <dd data-i18n="service_scope_value">Research and community service</dd>
             </div>
           </dl>
         </div>
@@ -69,15 +89,15 @@
             <div class="year-stamp">2027</div>
             <div class="entry-stack">
               <article class="entry-card">
-                <p class="entry-meta">Program Committee</p>
+                <p class="entry-meta" data-i18n="service_program_committee">Program Committee</p>
                 <h3>ICSE 2027 · Research Track</h3>
-                <p>Committee member.</p>
+                <p data-i18n="service_committee_member">Committee member.</p>
               </article>
 
               <article class="entry-card">
-                <p class="entry-meta">Program Committee</p>
+                <p class="entry-meta" data-i18n="service_program_committee">Program Committee</p>
                 <h3>FSE 2027 · Research Track</h3>
-                <p>Committee member.</p>
+                <p data-i18n="service_committee_member">Committee member.</p>
               </article>
             </div>
           </div>
@@ -86,39 +106,39 @@
             <div class="year-stamp">2026</div>
             <div class="entry-stack">
               <article class="entry-card">
-                <p class="entry-meta">Program Committee</p>
+                <p class="entry-meta" data-i18n="service_program_committee">Program Committee</p>
                 <h3>ASE 2026 · Research Track</h3>
-                <p>PC member.</p>
+                <p data-i18n="service_pc_member">PC member.</p>
               </article>
 
               <article class="entry-card">
-                <p class="entry-meta">Program Committee</p>
+                <p class="entry-meta" data-i18n="service_program_committee">Program Committee</p>
                 <h3>ICST 2026 · Research Papers</h3>
-                <p>Committee member.</p>
+                <p data-i18n="service_committee_member">Committee member.</p>
               </article>
 
               <article class="entry-card">
-                <p class="entry-meta">Tool competition leadership</p>
+                <p class="entry-meta" data-i18n="service_tool_competition_leadership">Tool competition leadership</p>
                 <h3>ICST 2026 · Self-Driving Car and UAV Testing</h3>
-                <p>Tool Competition Co-chair and session chair.</p>
+                <p data-i18n="service_tool_competition_desc">Tool Competition Co-chair and session chair.</p>
               </article>
 
               <article class="entry-card">
-                <p class="entry-meta">Workshop organization</p>
+                <p class="entry-meta" data-i18n="service_workshop_organization">Workshop organization</p>
                 <h3>ASTA 2026</h3>
-                <p>Organizing committee member, panel activity, and session chair.</p>
+                <p data-i18n="service_asta_desc">Organizing committee member, panel activity, and session chair.</p>
               </article>
 
               <article class="entry-card">
-                <p class="entry-meta">Program Committee</p>
+                <p class="entry-meta" data-i18n="service_program_committee">Program Committee</p>
                 <h3>ISSTA 2026 · Research Papers</h3>
-                <p>Committee member.</p>
+                <p data-i18n="service_committee_member">Committee member.</p>
               </article>
 
               <article class="entry-card">
-                <p class="entry-meta">Organizing Committee</p>
+                <p class="entry-meta" data-i18n="service_organizing_committee">Organizing Committee</p>
                 <h3>Gamify 2026 at EASE 2026</h3>
-                <p>Workshop organizer.</p>
+                <p data-i18n="service_workshop_organizer">Workshop organizer.</p>
               </article>
             </div>
           </div>
@@ -127,9 +147,9 @@
             <div class="year-stamp">2025</div>
             <div class="entry-stack">
               <article class="entry-card">
-                <p class="entry-meta">Program Committee</p>
+                <p class="entry-meta" data-i18n="service_program_committee">Program Committee</p>
                 <h3>IDE 2025</h3>
-                <p>Program committee member.</p>
+                <p data-i18n="service_program_committee_member">Program committee member.</p>
               </article>
             </div>
           </div>
@@ -141,14 +161,14 @@
       <div class="shell footer-inner">
         <div class="footer-copy">
           <p>Tommaso Fulcini</p>
-          <small>Postdoctoral researcher · Politecnico di Torino</small>
+          <small data-i18n="footer_role">Postdoctoral researcher · Politecnico di Torino</small>
         </div>
 
         <div class="footer-contact">
-          <a href="mailto:tommaso.fulcini@polito.it">tommaso.fulcini@polito.it</a>
+          <span>tommaso &lt;dot&gt; fulcini &lt;at&gt; polito &lt;dot&gt; it</span>
         </div>
 
-        <div class="footer-socials" aria-label="External profiles">
+        <div class="footer-socials" aria-label="External profiles" data-i18n-aria-label="external_profiles_label">
           <a class="social-link" href="https://it.linkedin.com/in/tommaso-fulcini/en" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.3 8.4A1.7 1.7 0 1 1 6.3 5a1.7 1.7 0 0 1 0 3.4ZM4.8 9.8h3v9.4h-3Zm4.8 0h2.9v1.3h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7v5h-3v-4.4c0-1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3v4.5h-3Z"/></svg>
           </a>

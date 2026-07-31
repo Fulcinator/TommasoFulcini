@@ -12,7 +12,7 @@
     <script src="news-data.js" defer></script>
     <script src="script.js" defer></script>
   </head>
-  <body class="page page-home">
+  <body class="page page-home" data-page="home">
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
     <header class="site-header">
@@ -21,17 +21,41 @@
           <span class="site-brand-mark">TF</span>
           <span class="site-brand-copy">
             <strong>Tommaso Fulcini</strong>
-            <small>Software Engineering Research</small>
+            <small data-i18n="brand_subtitle">Software Engineering Research</small>
           </span>
         </a>
 
-        <nav class="site-nav" aria-label="Primary">
-          <a class="is-current" href="index.html" aria-current="page">Home</a>
-          <a href="publications.html">Publications</a>
-          <a href="teaching.html">Teaching</a>
-          <a href="service.html">Service</a>
-          <a href="other.html">Other</a>
-        </nav>
+        <div class="site-header-actions">
+          <nav class="site-nav" aria-label="Primary" data-i18n-aria-label="primary_nav_label">
+            <a class="is-current" href="index.html" aria-current="page" data-i18n="nav_home">Home</a>
+            <a href="publications.html" data-i18n="nav_publications">Publications</a>
+            <a href="teaching.html" data-i18n="nav_teaching">Teaching</a>
+            <a href="service.html" data-i18n="nav_service">Service</a>
+            <a href="other.html" data-i18n="nav_other">Other</a>
+          </nav>
+
+          <div class="site-controls">
+            <div class="language-switch" role="group" data-i18n-aria-label="lang_control_label">
+              <button class="control-chip" type="button" data-lang-option="en" aria-pressed="false">EN</button>
+              <button class="control-chip" type="button" data-lang-option="it" aria-pressed="false">IT</button>
+            </div>
+
+            <button
+              class="theme-toggle"
+              type="button"
+              data-theme-toggle
+              data-i18n-aria-label="theme_toggle_label"
+              data-i18n-title="theme_toggle_label"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 3.75v1.5M12 18.75v1.5M4.75 12h-1.5M20.75 12h-1.5M6.88 6.88 5.82 5.82M18.18 18.18l-1.06-1.06M17.12 6.88l1.06-1.06M5.82 18.18l1.06-1.06M15.75 12A3.75 3.75 0 1 1 8.25 12a3.75 3.75 0 0 1 7.5 0Z"
+                />
+              </svg>
+              <span class="visually-hidden" data-i18n="theme_toggle_label">Toggle dark mode</span>
+            </button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -39,39 +63,33 @@
       <section class="page-hero home-hero home-hero-compact">
         <div class="shell home-intro-grid">
           <div class="hero-copy reveal">
-            <p class="hero-kicker">DAUIN · Politecnico di Torino</p>
+            <p class="hero-kicker" data-i18n="home_kicker">DAUIN · Politecnico di Torino</p>
             <h1>Tommaso Fulcini</h1>
-            <p class="home-role">Postdoctoral Researcher in Software Engineering</p>
-            <p class="hero-lead">
-              I work on software testing, gamification, code quality, and the use of large
-              language models for refactoring and maintainability.
+            <p class="home-role" data-i18n="home_role">Postdoctoral Researcher in Software Engineering</p>
+            <p class="hero-lead" data-i18n="home_lead">
+              I am a postdoctoral researcher at Politecnico di Torino working on software
+              testing, gamification, code quality, maintainability, and the use of large
+              language models in software engineering, with a focus on practical tool support
+              and empirical studies.
             </p>
 
             <dl class="profile-meta">
               <div>
-                <dt>Pronouns</dt>
+                <dt data-i18n="home_pronouns_label">Pronouns</dt>
                 <dd>he/him</dd>
               </div>
               <div>
-                <dt>Location</dt>
-                <dd>Turin, Italy</dd>
+                <dt data-i18n="home_location_label">Location</dt>
+                <dd data-i18n="home_location_value">Turin, Italy</dd>
               </div>
               <div>
-                <dt>Affiliation</dt>
+                <dt data-i18n="home_affiliation_label">Affiliation</dt>
                 <dd>Politecnico di Torino</dd>
               </div>
             </dl>
 
             <div class="hero-actions">
-              <a class="button button-primary" href="publications.html">Publications</a>
-              <a class="button button-secondary" href="service.html">Service</a>
-              <a
-                class="button button-secondary"
-                href="https://www.polito.it/personale?p=tommaso.fulcini"
-                target="_blank"
-                rel="noopener"
-                >Institutional profile</a
-              >
+              <a class="button button-primary" href="mailto:tommaso.fulcini@polito.it" data-i18n="home_contact_button">Contact me</a>
             </div>
           </div>
 
@@ -81,53 +99,27 @@
             </div>
 
             <div class="profile-summary-card">
-              <p class="panel-kicker">Current focus</p>
+              <p class="panel-kicker" data-i18n="home_focus_kicker">Current focus</p>
               <ul class="focus-list">
-                <li>Gamification for software testing</li>
-                <li>LLM-assisted refactoring and test repair</li>
-                <li>Code quality and maintainability</li>
-                <li>Developer-centered tooling</li>
+                <li data-i18n="home_focus_1">Gamification for software testing</li>
+                <li data-i18n="home_focus_2">LLM-assisted refactoring and test repair</li>
+                <li data-i18n="home_focus_3">Code quality and maintainability</li>
+                <li data-i18n="home_focus_4">Developer-centered tooling</li>
               </ul>
             </div>
           </aside>
         </div>
       </section>
 
-      <section class="band band-tight">
-        <div class="shell home-columns">
-          <section class="home-panel reveal">
-            <p class="section-kicker">About</p>
-            <h2>Research profile</h2>
-            <p>
-              My work combines empirical software engineering and tool support, with a current
-              emphasis on testing workflows, maintainability, and practical uses of AI in
-              software development.
-            </p>
-          </section>
-
-          <section class="home-panel reveal">
-            <p class="section-kicker">Pages</p>
-            <h2>Explore the site</h2>
-            <div class="mini-route-grid">
-              <a href="publications.html">Full publications list</a>
-              <a href="teaching.html">Teaching activity</a>
-              <a href="service.html">Professional service</a>
-              <a href="other.html">Other interests</a>
-            </div>
-          </section>
-        </div>
-      </section>
-
       <section class="band band-tint">
         <div class="shell news-layout">
           <div class="section-heading reveal">
-            <p class="section-kicker">News</p>
-            <h2>Recent updates</h2>
-            <p>
+            <p class="section-kicker" data-i18n="home_news_kicker">News</p>
+            <h2 data-i18n="home_news_title">Recent updates</h2>
+            <p data-i18n="home_news_desc">
               Short announcements for accepted papers, talks, committee roles, and other
               milestones.
             </p>
-            <p class="news-manage-note">Managed through GitHub Issues.</p>
           </div>
 
           <div class="news-stack reveal" id="news-list" aria-live="polite"></div>
@@ -139,14 +131,14 @@
       <div class="shell footer-inner">
         <div class="footer-copy">
           <p>Tommaso Fulcini</p>
-          <small>Postdoctoral researcher · Politecnico di Torino</small>
+          <small data-i18n="footer_role">Postdoctoral researcher · Politecnico di Torino</small>
         </div>
 
         <div class="footer-contact">
-          <a href="mailto:tommaso.fulcini@polito.it">tommaso.fulcini@polito.it</a>
+          <span>tommaso &lt;dot&gt; fulcini &lt;at&gt; polito &lt;dot&gt; it</span>
         </div>
 
-        <div class="footer-socials" aria-label="External profiles">
+        <div class="footer-socials" aria-label="External profiles" data-i18n-aria-label="external_profiles_label">
           <a
             class="social-link"
             href="https://it.linkedin.com/in/tommaso-fulcini/en"

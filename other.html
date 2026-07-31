@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
-  <body class="page">
+  <body class="page" data-page="other">
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
     <header class="site-header">
@@ -20,17 +20,41 @@
           <span class="site-brand-mark">TF</span>
           <span class="site-brand-copy">
             <strong>Tommaso Fulcini</strong>
-            <small>Software Engineering Research</small>
+            <small data-i18n="brand_subtitle">Software Engineering Research</small>
           </span>
         </a>
 
-        <nav class="site-nav" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="publications.html">Publications</a>
-          <a href="teaching.html">Teaching</a>
-          <a href="service.html">Service</a>
-          <a class="is-current" href="other.html" aria-current="page">Other</a>
-        </nav>
+        <div class="site-header-actions">
+          <nav class="site-nav" aria-label="Primary" data-i18n-aria-label="primary_nav_label">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="publications.html" data-i18n="nav_publications">Publications</a>
+            <a href="teaching.html" data-i18n="nav_teaching">Teaching</a>
+            <a href="service.html" data-i18n="nav_service">Service</a>
+            <a class="is-current" href="other.html" aria-current="page" data-i18n="nav_other">Other</a>
+          </nav>
+
+          <div class="site-controls">
+            <div class="language-switch" role="group" data-i18n-aria-label="lang_control_label">
+              <button class="control-chip" type="button" data-lang-option="en" aria-pressed="false">EN</button>
+              <button class="control-chip" type="button" data-lang-option="it" aria-pressed="false">IT</button>
+            </div>
+
+            <button
+              class="theme-toggle"
+              type="button"
+              data-theme-toggle
+              data-i18n-aria-label="theme_toggle_label"
+              data-i18n-title="theme_toggle_label"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 3.75v1.5M12 18.75v1.5M4.75 12h-1.5M20.75 12h-1.5M6.88 6.88 5.82 5.82M18.18 18.18l-1.06-1.06M17.12 6.88l1.06-1.06M5.82 18.18l1.06-1.06M15.75 12A3.75 3.75 0 1 1 8.25 12a3.75 3.75 0 0 1 7.5 0Z"
+                />
+              </svg>
+              <span class="visually-hidden" data-i18n="theme_toggle_label">Toggle dark mode</span>
+            </button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -38,26 +62,26 @@
       <section class="page-hero inner-hero">
         <div class="shell inner-hero-shell">
           <div class="hero-copy reveal">
-            <p class="hero-kicker">Flexible page</p>
-            <h1>Other</h1>
-            <p class="hero-lead">
-              A deliberately open section for side topics, personal interests, talks,
-              collaborations, and project notes that do not belong elsewhere.
+            <p class="hero-kicker" data-i18n="other_kicker">Interests and directions</p>
+            <h1 data-i18n="other_title">Other</h1>
+            <p class="hero-lead" data-i18n="other_lead">
+              A space for broader interests, talks, collaborations, and side projects that sit
+              alongside my main research activity.
             </p>
           </div>
 
           <dl class="page-meta-strip reveal">
             <div>
-              <dt>Current use</dt>
-              <dd>Research-adjacent interests</dd>
+              <dt data-i18n="other_current_use_label">Current use</dt>
+              <dd data-i18n="other_current_use_value">Research-adjacent interests</dd>
             </div>
             <div>
-              <dt>Future fit</dt>
-              <dd>Talks, hobbies, side projects</dd>
+              <dt data-i18n="other_future_fit_label">Future fit</dt>
+              <dd data-i18n="other_future_fit_value">Talks, hobbies, side projects</dd>
             </div>
             <div>
-              <dt>Tone</dt>
-              <dd>Less formal, still structured</dd>
+              <dt data-i18n="other_tone_label">Tone</dt>
+              <dd data-i18n="other_tone_value">Less formal, still structured</dd>
             </div>
           </dl>
         </div>
@@ -66,15 +90,15 @@
       <section class="band band-tint">
         <div class="shell">
           <div class="section-heading reveal">
-            <p class="section-kicker">Research-adjacent interests</p>
-            <h2>Directions that already surface in public profiles</h2>
+            <p class="section-kicker" data-i18n="other_section_kicker">Research-adjacent interests</p>
+            <h2 data-i18n="other_section_title">Directions that already surface in public profiles</h2>
           </div>
 
           <div class="theme-grid">
             <article class="theme-panel reveal">
               <p class="panel-kicker">01</p>
-              <h3>Human-computer interaction for developers</h3>
-              <p>
+              <h3 data-i18n="other_theme_1_title">Human-computer interaction for developers</h3>
+              <p data-i18n="other_theme_1_desc">
                 How software engineering tools feel to use matters. Interfaces shape adoption,
                 continuity, and the quality of the resulting engineering work.
               </p>
@@ -82,8 +106,8 @@
 
             <article class="theme-panel reveal">
               <p class="panel-kicker">02</p>
-              <h3>Games and playful systems</h3>
-              <p>
+              <h3 data-i18n="other_theme_2_title">Games and playful systems</h3>
+              <p data-i18n="other_theme_2_desc">
                 Public work already connects testing with game-inspired mechanics. This page can
                 later broaden that into a more personal note on games, design, or playful learning.
               </p>
@@ -91,8 +115,8 @@
 
             <article class="theme-panel reveal">
               <p class="panel-kicker">03</p>
-              <h3>Developer experience</h3>
-              <p>
+              <h3 data-i18n="other_theme_3_title">Developer experience</h3>
+              <p data-i18n="other_theme_3_desc">
                 Tooling, feedback loops, onboarding, and maintainability all sit close to the
                 question of what makes a software workflow genuinely usable.
               </p>
@@ -100,8 +124,8 @@
 
             <article class="theme-panel reveal">
               <p class="panel-kicker">04</p>
-              <h3>AI in practical engineering workflows</h3>
-              <p>
+              <h3 data-i18n="other_theme_4_title">AI in practical engineering workflows</h3>
+              <p data-i18n="other_theme_4_desc">
                 The interesting part is not AI in the abstract, but where it changes real
                 engineering tasks in ways that are measurable, reviewable, and worth keeping.
               </p>
@@ -113,9 +137,9 @@
       <section class="band">
         <div class="shell split-band">
           <div class="section-intro sticky reveal">
-            <p class="section-kicker">Next additions</p>
-            <h2>Useful ways to grow this page</h2>
-            <p>
+            <p class="section-kicker" data-i18n="other_next_kicker">Next additions</p>
+            <h2 data-i18n="other_next_title">Useful ways to grow this page</h2>
+            <p data-i18n="other_next_desc">
               This is the natural place for content that should not sit in publications or service,
               but still helps the site feel more personal and memorable.
             </p>
@@ -124,20 +148,20 @@
           <div class="section-flow">
             <article class="flow-panel reveal">
               <p class="panel-kicker">A</p>
-              <h3>Talks and invited presentations</h3>
-              <p>Add short entries for talks, tutorials, panels, or school lectures.</p>
+              <h3 data-i18n="other_flow_a_title">Talks and invited presentations</h3>
+              <p data-i18n="other_flow_a_desc">Add short entries for talks, tutorials, panels, or school lectures.</p>
             </article>
 
             <article class="flow-panel reveal">
               <p class="panel-kicker">B</p>
-              <h3>Side projects or prototypes</h3>
-              <p>Use this space for experimental tools, demos, or smaller ideas outside formal papers.</p>
+              <h3 data-i18n="other_flow_b_title">Side projects or prototypes</h3>
+              <p data-i18n="other_flow_b_desc">Use this space for experimental tools, demos, or smaller ideas outside formal papers.</p>
             </article>
 
             <article class="flow-panel reveal">
               <p class="panel-kicker">C</p>
-              <h3>Personal interests</h3>
-              <p>Music, travel, sport, books, photography, or anything else you want the site to carry.</p>
+              <h3 data-i18n="other_flow_c_title">Personal interests</h3>
+              <p data-i18n="other_flow_c_desc">Music, travel, sport, books, photography, or anything else you want the site to carry.</p>
             </article>
           </div>
         </div>
@@ -148,14 +172,14 @@
       <div class="shell footer-inner">
         <div class="footer-copy">
           <p>Tommaso Fulcini</p>
-          <small>Postdoctoral researcher · Politecnico di Torino</small>
+          <small data-i18n="footer_role">Postdoctoral researcher · Politecnico di Torino</small>
         </div>
 
         <div class="footer-contact">
-          <a href="mailto:tommaso.fulcini@polito.it">tommaso.fulcini@polito.it</a>
+          <span>tommaso &lt;dot&gt; fulcini &lt;at&gt; polito &lt;dot&gt; it</span>
         </div>
 
-        <div class="footer-socials" aria-label="External profiles">
+        <div class="footer-socials" aria-label="External profiles" data-i18n-aria-label="external_profiles_label">
           <a class="social-link" href="https://it.linkedin.com/in/tommaso-fulcini/en" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.3 8.4A1.7 1.7 0 1 1 6.3 5a1.7 1.7 0 0 1 0 3.4ZM4.8 9.8h3v9.4h-3Zm4.8 0h2.9v1.3h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7v5h-3v-4.4c0-1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3v4.5h-3Z"/></svg>
           </a>
