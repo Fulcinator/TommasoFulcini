@@ -1,5 +1,32 @@
 window.publicationsData = [
   {
+    key: "amalfitano2026genairoadmap",
+    year: 2026,
+    meta: "In press · ACM Transactions on Software Engineering and Methodology",
+    title: "A Research Roadmap for Augmenting Software Engineering Processes and Software Products with Generative AI",
+    authors: [
+      "Domenico Amalfitano",
+      "Andreas Metzger",
+      "Marco Autili",
+      "Tommaso Fulcini",
+      "Tobias Hey",
+      "Jan Keim",
+      "Patrizio Pelliccione",
+      "Vincenzo Scotti",
+      "Anne Koziolek",
+      "Raffaela Mirandola",
+      "Andreas Vogelsang"
+    ],
+    bibtex: `@article{amalfitano2026genairoadmap,
+  author  = {Domenico Amalfitano and Andreas Metzger and Marco Autili and Tommaso Fulcini and Tobias Hey and Jan Keim and Patrizio Pelliccione and Vincenzo Scotti and Anne Koziolek and Raffaela Mirandola and Andreas Vogelsang},
+  title   = {A Research Roadmap for Augmenting Software Engineering Processes and Software Products with Generative AI},
+  journal = {ACM Transactions on Software Engineering and Methodology},
+  year    = {2026},
+  note    = {In press},
+  doi     = {10.1145/3788879}
+}`
+  },
+  {
     key: "fulcini2026llmrefactoring",
     year: 2026,
     meta: "Conference volume · PROFES 2025",
@@ -21,6 +48,59 @@ window.publicationsData = [
   booktitle = {Product-Focused Software Process Improvement},
   year      = {2026},
   note      = {PROFES 2025 conference volume}
+}`
+  },
+  {
+    key: "coppola2026multiagenttestgen",
+    year: 2026,
+    meta: "In press · Euromicro Conference on Software Engineering and Advanced Applications 2026",
+    title: "Do Multi-Agent LLMs Improve Test Generation? A Study of Coverage, Mutation Score, and Cost",
+    authors: [
+      "Riccardo Coppola",
+      "Tommaso Fulcini",
+      "Flavio Giobergia",
+      "Davide Randino",
+      "Marco Roman",
+      "Erik Scolaro",
+      "Luigi Aceto",
+      "Isabella Ilaria Favero"
+    ],
+    bibtex: `@inproceedings{coppola2026multiagenttestgen,
+  author    = {Riccardo Coppola and Tommaso Fulcini and Flavio Giobergia and Davide Randino and Marco Roman and Erik Scolaro and Luigi Aceto and Isabella Ilaria Favero},
+  title     = {Do Multi-Agent {LLMs} Improve Test Generation? A Study of Coverage, Mutation Score, and Cost},
+  booktitle = {Euromicro Conference on Software Engineering and Advanced Applications},
+  year      = {2026},
+  note      = {In press}
+}`
+  },
+  {
+    key: "fulcini2026fixyou",
+    year: 2026,
+    meta: "Workshop · Workshop on Validation, Analysis and Evolution of Software Tests",
+    title: "I Will Try to Fix You: Large Language Models for Mobile GUI Test Repair",
+    authors: ["Tommaso Fulcini", "Alessandro Poletti", "Anna Arnaudo", "Riccardo Coppola"],
+    bibtex: `@inproceedings{fulcini2026fixyou,
+  author    = {Tommaso Fulcini and Alessandro Poletti and Anna Arnaudo and Riccardo Coppola},
+  title     = {I Will Try to Fix You: Large Language Models for Mobile {GUI} Test Repair},
+  booktitle = {Workshop on Validation, Analysis and Evolution of Software Tests},
+  year      = {2026},
+  pages     = {341--348},
+  doi       = {10.1109/SANER-C67878.2026.00052}
+}`
+  },
+  {
+    key: "aryan2026sbftcompetition",
+    year: 2026,
+    meta: "Workshop · SBFT 2026",
+    title: "SBFT Tool Competition 2026 - CPS-SDC Regression Testing Track",
+    authors: ["Prakash Aryan", "Tommaso Fulcini", "Luigi Libero Lucio Starace", "Christian Birchler", "Sebastiano Panichella"],
+    bibtex: `@inproceedings{aryan2026sbftcompetition,
+  author    = {Prakash Aryan and Tommaso Fulcini and Luigi Libero Lucio Starace and Christian Birchler and Sebastiano Panichella},
+  title     = {SBFT Tool Competition 2026 - CPS-SDC Regression Testing Track},
+  booktitle = {Proceedings of SBFT 2026},
+  year      = {2026},
+  pages     = {19--22},
+  doi       = {10.1145/3786155.3795699}
 }`
   },
   {
@@ -52,6 +132,20 @@ window.publicationsData = [
 }`
   },
   {
+    key: "fulcini2025e2ephd",
+    year: 2025,
+    meta: "Doctoral thesis · Politecnico di Torino",
+    title: "Gamification of E2E Software Testing",
+    authors: ["Tommaso Fulcini"],
+    bibtex: `@phdthesis{fulcini2025e2ephd,
+  author = {Tommaso Fulcini},
+  title  = {Gamification of E2E Software Testing},
+  school = {Politecnico di Torino},
+  year   = {2025},
+  doi    = {10.13121/polito/porto/3003998}
+}`
+  },
+  {
     key: "laudadio2025gappium",
     year: 2025,
     meta: "In press · Gamify 2025",
@@ -63,6 +157,19 @@ window.publicationsData = [
   booktitle = {Proceedings of Gamify 2025},
   year      = {2025},
   note      = {In press}
+}`
+  },
+  {
+    key: "laudadio2025gappiumreport",
+    year: 2025,
+    meta: "Report · IRIS entry",
+    title: "GAppium",
+    authors: ["Lorenzo Laudadio", "Riccardo Coppola", "Marco Torchiano", "Tommaso Fulcini"],
+    bibtex: `@misc{laudadio2025gappiumreport,
+  author = {Lorenzo Laudadio and Riccardo Coppola and Marco Torchiano and Tommaso Fulcini},
+  title  = {GAppium},
+  year   = {2025},
+  note   = {Report entry in IRIS}
 }`
   },
   {
@@ -246,6 +353,21 @@ window.publicationsData = [
   title     = {Survival of the Tested: Gamified Unit Testing Inspired by Battle Royale},
   booktitle = {Proceedings of GAS 2023},
   year      = {2023}
+}`
+  },
+  {
+    key: "cacciotto2021metric",
+    year: 2021,
+    meta: "Conference · INTUITESTBEDS 2021",
+    title: "A Metric Framework for the Gamification of Web and Mobile GUI Testing",
+    authors: ["Filippo Cacciotto", "Tommaso Fulcini", "Riccardo Coppola", "Luca Ardito"],
+    bibtex: `@inproceedings{cacciotto2021metric,
+  author    = {Filippo Cacciotto and Tommaso Fulcini and Riccardo Coppola and Luca Ardito},
+  title     = {A Metric Framework for the Gamification of Web and Mobile {GUI} Testing},
+  booktitle = {Proceedings of INTUITESTBEDS 2021},
+  year      = {2021},
+  pages     = {126--129},
+  doi       = {10.1109/ICSTW52544.2021.00032}
 }`
   },
   {

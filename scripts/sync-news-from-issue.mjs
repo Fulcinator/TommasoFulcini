@@ -18,23 +18,43 @@ if (!issue) {
 }
 
 const extractSections = (body) => {
+  const normalized = (body ?? "").replace(/\r/g, "");
   const sections = {};
-  const headingRegex = /^###\s+(.+?)\r?\n([\s\S]*?)(?=^###\s+|\s*$)/gm;
-  let match;
+  const lines = normalized.split("\n");
+  let currentLabel = null;
+  let buffer = [];
 
-  while ((match = headingRegex.exec(body)) !== null) {
-    sections[match[1].trim()] = match[2].trim();
+  const flushCurrentSection = () => {
+    if (!currentLabel) {
+      return;
+    }
+
+    sections[currentLabel] = buffer.join("\n").trim();
+  };
+
+  for (const line of lines) {
+    const headingMatch = line.match(/^###\s+(.+?)\s*$/);
+    if (headingMatch) {
+      flushCurrentSection();
+      currentLabel = headingMatch[1].trim();
+      buffer = [];
+      continue;
+    }
+
+    const boldLabelMatch = line.match(/^\*\*(.+?)\*\*\s*$/);
+    if (boldLabelMatch) {
+      flushCurrentSection();
+      currentLabel = boldLabelMatch[1].trim();
+      buffer = [];
+      continue;
+    }
+
+    if (currentLabel) {
+      buffer.push(line);
+    }
   }
 
-  if (Object.keys(sections).length > 0) {
-    return sections;
-  }
-
-  const boldLabelRegex = /^\*\*(.+?)\*\*\r?\n([\s\S]*?)(?=^\*\*.+?\*\*\r?\n|\s*$)/gm;
-  while ((match = boldLabelRegex.exec(body)) !== null) {
-    sections[match[1].trim()] = match[2].trim();
-  }
-
+  flushCurrentSection();
   return sections;
 };
 
@@ -45,6 +65,10 @@ const cleanField = (value) => {
 
   const cleaned = value.replace(/\r/g, "").trim();
   if (cleaned === "_No response_" || cleaned === "*No response*") {
+    return "";
+  }
+
+  if (/^```(?:[\w-]+)?\s*```$/s.test(cleaned)) {
     return "";
   }
 
