@@ -892,6 +892,48 @@ li {
   border-color: rgba(15, 118, 110, 0.28);
 }
 
+.placeholder-card {
+  padding: 1.4rem;
+  border: 1px dashed rgba(22, 32, 39, 0.2);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.05), transparent 48%),
+    rgba(255, 255, 255, 0.76);
+  box-shadow: var(--shadow);
+}
+
+.placeholder-card h2 {
+  margin-top: 0.5rem;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.05;
+}
+
+.placeholder-card p {
+  margin-top: 0.8rem;
+  max-width: 58ch;
+  color: var(--muted);
+}
+
+.placeholder-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.15rem;
+}
+
+.placeholder-grid span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.2rem;
+  padding: 0 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 118, 110, 0.18);
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 .route-grid {
   margin-top: 1.5rem;
   display: grid;

@@ -9,6 +9,7 @@ on:
       - Sync News From Issue
       - Sync Publications From IRIS
       - Sync Teaching From Profiles
+      - Sync Service From Researchr
     types:
       - completed
   workflow_dispatch:

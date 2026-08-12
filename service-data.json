@@ -1,0 +1,89 @@
+{
+  "updatedAt": "2026-08-12",
+  "sources": [
+    {
+      "id": "researchr",
+      "label": "conf.researchr general profile",
+      "url": "https://conf.researchr.org/profile/tommasofulcini"
+    }
+  ],
+  "items": [
+    {
+      "id": "2027-esec-fse-program-committee-research-papers",
+      "year": 2027,
+      "title": {
+        "it": "ESEC/FSE 2027 · Articoli di ricerca",
+        "en": "ESEC/FSE 2027 · Research Papers"
+      },
+      "roleType": "program_committee",
+      "url": "https://conf.researchr.org/committee/fse-2027/fse-2027-papers-program-committee",
+      "source": "researchr"
+    },
+    {
+      "id": "2027-icse-program-committee-research-track",
+      "year": 2027,
+      "title": {
+        "it": "ICSE 2027 · Track di ricerca",
+        "en": "ICSE 2027 · Research Track"
+      },
+      "roleType": "program_committee",
+      "url": "https://conf.researchr.org/committee/icse-2027/icse-2027-research-track-program-committee",
+      "source": "researchr"
+    },
+    {
+      "id": "2026-ase-program-committee-research-papers",
+      "year": 2026,
+      "title": {
+        "it": "ASE 2026 · Articoli di ricerca",
+        "en": "ASE 2026 · Research Papers"
+      },
+      "roleType": "program_committee",
+      "url": "https://conf.researchr.org/committee/ase-2026/ase-2026-research-track-programm-committee",
+      "source": "researchr"
+    },
+    {
+      "id": "2026-asta-organizing-committee-asta-2026",
+      "year": 2026,
+      "title": {
+        "it": "ASTA 2026",
+        "en": "ASTA 2026"
+      },
+      "roleType": "organizing_committee",
+      "url": "https://conf.researchr.org/committee/icst-2026/asta-2026-papers-organizing-committee",
+      "source": "researchr"
+    },
+    {
+      "id": "2026-gamify-organizing-committee-gamify-2026",
+      "year": 2026,
+      "title": {
+        "it": "Gamify 2026",
+        "en": "Gamify 2026"
+      },
+      "roleType": "organizing_committee",
+      "url": "https://conf.researchr.org/committee/ease-2026/gamify-2026-papers-organizing-committee",
+      "source": "researchr"
+    },
+    {
+      "id": "2026-icst-program-committee-research-papers",
+      "year": 2026,
+      "title": {
+        "it": "ICST 2026 · Articoli di ricerca",
+        "en": "ICST 2026 · Research Papers"
+      },
+      "roleType": "program_committee",
+      "url": "https://conf.researchr.org/committee/icst-2026/icst-2026-papers-program-committee",
+      "source": "researchr"
+    },
+    {
+      "id": "2025-ide-program-committee-integrated-development-environments",
+      "year": 2025,
+      "title": {
+        "it": "IDE 2025 · Ambienti di sviluppo integrati",
+        "en": "IDE 2025 · Integrated Development Environments"
+      },
+      "roleType": "program_committee",
+      "url": "https://conf.researchr.org/committee/icse-2025/ide-2025-papers-program-committee",
+      "source": "researchr"
+    }
+  ]
+}

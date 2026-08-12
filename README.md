@@ -13,6 +13,8 @@ Static multipage personal site prepared for GitHub Pages.
 - `teaching-overrides.json`: local overrides and fully manual teaching entries
 - `scripts/sync-teaching-from-profiles.mjs`: monthly teaching sync script
 - `service.html`: professional service page
+- `service-data.json`: local service data fetched from the conf.researchr profile
+- `scripts/sync-service-from-researchr.mjs`: service sync script for committee roles
 - `other.html`: additional interests page
 - `styles.css`: shared styling
 - `script.js`: scroll progress and reveal animations
@@ -22,6 +24,7 @@ Static multipage personal site prepared for GitHub Pages.
 - `.github/workflows/sync-news-from-issue.yml`: workflow that publishes issue submissions
 - `.github/workflows/sync-publications-from-iris.yml`: weekly workflow that imports new IRIS publications
 - `.github/workflows/sync-teaching-from-profiles.yml`: monthly workflow that refreshes teaching data
+- `.github/workflows/sync-service-from-researchr.yml`: weekly workflow that refreshes service data
 - `.github/workflows/deploy.yml`: GitHub Pages deployment workflow
 
 ## Publish on GitHub Pages
@@ -73,6 +76,9 @@ If you use a different repository name, GitHub Pages will publish it under:
 - `teaching-overrides.json.items` is a map keyed by teaching `id` for overriding synchronized fields.
 - `teaching-overrides.json.manualItems` is the place for courses that do not come from Polito or UPO pages.
 - The teaching sync runs monthly on the first day of the month at 05:11 UTC and can also be started manually with `workflow_dispatch`.
+- The service page is rendered from `service-data.json`, which is refreshed from the general conf.researchr profile.
+- The service sync keeps only program committee and organizing committee roles, with bilingual titles generated locally.
+- The service sync runs weekly every Monday at 05:29 UTC and can also be started manually with `workflow_dispatch`.
 - Homepage news is rendered from `news-data.js`.
 - News can now be submitted through the GitHub issue form defined in `.github/ISSUE_TEMPLATE/news.yml`.
 - The workflow in `.github/workflows/sync-news-from-issue.yml` rewrites `news-data.js`, commits the change, and lets GitHub Pages redeploy from `main`.

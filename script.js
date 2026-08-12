@@ -4,6 +4,8 @@ const newsList = document.querySelector("#news-list");
 const publicationsList = document.querySelector("#publications-list");
 const teachingList = document.querySelector("#teaching-list");
 const teachingUpdatedNote = document.querySelector("#teaching-updated");
+const serviceList = document.querySelector("#service-list");
+const serviceUpdatedNote = document.querySelector("#service-updated");
 const languageButtons = document.querySelectorAll("[data-lang-option]");
 const themeToggleButton = document.querySelector("[data-theme-toggle]");
 const pageKey = document.body.dataset.page || "home";
@@ -89,72 +91,68 @@ const translations = {
     service_kicker: { en: "Academic community", it: "Comunita accademica" },
     service_title: { en: "Professional service", it: "Servizio professionale" },
     service_lead: {
-      en: "Selected conference and workshop service roles across software engineering venues.",
-      it: "Selezione di ruoli di servizio in conferenze e workshop nell'ambito dell'ingegneria del software.",
+      en: "Program committee and organizing committee roles curated from my conf.researchr profile.",
+      it: "Ruoli di program committee e organizing committee ricavati dal mio profilo conf.researchr.",
     },
-    service_venues_label: { en: "Venues", it: "Venue" },
-    service_role_types_label: { en: "Role types", it: "Tipi di ruolo" },
-    service_role_types_value: { en: "PC, organizing committee, chairing", it: "PC, comitati organizzativi, chairing" },
-    service_scope_label: { en: "Scope", it: "Ambito" },
-    service_scope_value: { en: "Research and community service", it: "Servizio alla ricerca e alla comunita" },
     service_program_committee: { en: "Program Committee", it: "Program Committee" },
-    service_committee_member: { en: "Committee member.", it: "Membro del comitato." },
-    service_pc_member: { en: "PC member.", it: "Membro del PC." },
-    service_tool_competition_leadership: { en: "Tool competition leadership", it: "Responsabilita nella tool competition" },
-    service_tool_competition_desc: { en: "Tool Competition Co-chair and session chair.", it: "Co-chair della tool competition e chair di sessione." },
-    service_workshop_organization: { en: "Workshop organization", it: "Organizzazione workshop" },
-    service_asta_desc: { en: "Organizing committee member, panel activity, and session chair.", it: "Membro del comitato organizzatore, attivita di panel e chair di sessione." },
     service_organizing_committee: { en: "Organizing Committee", it: "Comitato organizzatore" },
-    service_workshop_organizer: { en: "Workshop organizer.", it: "Organizzatore del workshop." },
-    service_program_committee_member: { en: "Program committee member.", it: "Membro del program committee." },
+    service_updated_prefix: { en: "Updated from conf.researchr on", it: "Aggiornato da conf.researchr il" },
+    service_sources_label: { en: "Source", it: "Fonte" },
+    service_empty: { en: "No service roles available.", it: "Nessun ruolo di servizio disponibile." },
+    service_load_error: {
+      en: "Service data could not be loaded.",
+      it: "Impossibile caricare i dati del servizio professionale.",
+    },
+    service_role_program_committee: { en: "Program Committee", it: "Program committee" },
+    service_role_organizing_committee: { en: "Organizing Committee", it: "Comitato organizzatore" },
+    service_open_entry: { en: "Open entry", it: "Apri voce" },
   },
   other: {
     other_kicker: { en: "Interests and directions", it: "Interessi e direzioni" },
     other_title: { en: "Other", it: "Altro" },
     other_lead: {
-      en: "A space for broader interests, talks, collaborations, and side projects that sit alongside my main research activity.",
-      it: "Uno spazio per interessi piu ampi, talk, collaborazioni e progetti laterali che affiancano la mia principale attivita di ricerca.",
+      en: "This page is still under construction and will later host lighter material alongside my main research profile.",
+      it: "Questa pagina e ancora in costruzione e in futuro ospitera contenuti piu leggeri accanto al mio profilo di ricerca principale.",
     },
     other_current_use_label: { en: "Current use", it: "Uso attuale" },
-    other_current_use_value: { en: "Research-adjacent interests", it: "Interessi vicini alla ricerca" },
+    other_current_use_value: { en: "Work in progress", it: "Work in progress" },
     other_future_fit_label: { en: "Future fit", it: "Sviluppi futuri" },
-    other_future_fit_value: { en: "Talks, hobbies, side projects", it: "Talk, hobby, progetti laterali" },
+    other_future_fit_value: { en: "Talks, side projects, personal notes", it: "Talk, progetti laterali, note personali" },
     other_tone_label: { en: "Tone", it: "Tono" },
-    other_tone_value: { en: "Less formal, still structured", it: "Meno formale, ma strutturato" },
-    other_section_kicker: { en: "Research-adjacent interests", it: "Interessi vicini alla ricerca" },
-    other_section_title: { en: "Directions that already surface in public profiles", it: "Direzioni che emergono gia dai profili pubblici" },
-    other_theme_1_title: { en: "Human-computer interaction for developers", it: "Interazione uomo-macchina per sviluppatori" },
+    other_tone_value: { en: "Informal, concise, still curated", it: "Informale, conciso, ma curato" },
+    other_section_kicker: { en: "Under construction", it: "In costruzione" },
+    other_section_title: { en: "Still wiring this page", it: "Sto ancora costruendo questa pagina" },
+    other_section_desc: {
+      en: "I plan to use this space for invited talks, side projects, and a few personal notes that do not belong in publications, teaching, or service.",
+      it: "Vorrei usare questo spazio per talk su invito, progetti laterali e qualche nota personale che non appartiene a pubblicazioni, didattica o service.",
+    },
+    other_theme_1_title: { en: "Invited talks", it: "Talk su invito" },
     other_theme_1_desc: {
-      en: "How software engineering tools feel to use matters. Interfaces shape adoption, continuity, and the quality of the resulting engineering work.",
-      it: "L'esperienza d'uso degli strumenti di ingegneria del software conta. Le interfacce influenzano adozione, continuita e qualita del lavoro che ne deriva.",
+      en: "A compact archive of talks, guest lectures, and presentations that are easier to browse outside the news feed.",
+      it: "Un archivio compatto di talk, guest lecture e presentazioni, piu facile da consultare rispetto al news feed.",
     },
-    other_theme_2_title: { en: "Games and playful systems", it: "Giochi e sistemi ludici" },
+    other_theme_2_title: { en: "Side projects", it: "Progetti laterali" },
     other_theme_2_desc: {
-      en: "Public work already connects testing with game-inspired mechanics. This page can later broaden that into a more personal note on games, design, or playful learning.",
-      it: "Il lavoro pubblico collega gia il testing a meccaniche ispirate ai giochi. Questa pagina puo estendere il tema verso giochi, design o apprendimento ludico.",
+      en: "Experimental tools, prototypes, and smaller ideas that are worth showing even when they do not become formal publications.",
+      it: "Strumenti sperimentali, prototipi e idee piu piccole che vale comunque la pena mostrare anche quando non diventano pubblicazioni formali.",
     },
-    other_theme_3_title: { en: "Developer experience", it: "Developer experience" },
+    other_theme_3_title: { en: "A more personal layer", it: "Un livello piu personale" },
     other_theme_3_desc: {
-      en: "Tooling, feedback loops, onboarding, and maintainability all sit close to the question of what makes a software workflow genuinely usable.",
-      it: "Tooling, feedback loop, onboarding e manutenibilita sono tutti vicini alla domanda su cosa renda davvero usabile un workflow software.",
+      en: "The idea is to keep this page lighter and a bit more human without turning it into a random collection of links.",
+      it: "L'idea e mantenere questa pagina piu leggera e un po' piu personale senza trasformarla in una raccolta casuale di link.",
     },
-    other_theme_4_title: { en: "AI in practical engineering workflows", it: "AI nei workflow ingegneristici concreti" },
-    other_theme_4_desc: {
-      en: "The interesting part is not AI in the abstract, but where it changes real engineering tasks in ways that are measurable, reviewable, and worth keeping.",
-      it: "La parte interessante non e l'AI in astratto, ma dove cambia attivita reali di ingegneria in modi misurabili, verificabili e utili nel tempo.",
-    },
-    other_next_kicker: { en: "Next additions", it: "Prossime aggiunte" },
-    other_next_title: { en: "Useful ways to grow this page", it: "Modi utili per far crescere questa pagina" },
+    other_next_kicker: { en: "Coming soon", it: "In arrivo" },
+    other_next_title: { en: "Page under construction", it: "Pagina in costruzione" },
     other_next_desc: {
-      en: "This is the natural place for content that should not sit in publications or service, but still helps the site feel more personal and memorable.",
-      it: "Questo e il posto giusto per contenuti che non appartengono a pubblicazioni o service, ma che rendono il sito piu personale e memorabile.",
+      en: "For now, this section is intentionally light. It will grow once there is material that deserves a more informal home.",
+      it: "Per ora questa sezione resta volutamente leggera. Crescera quando ci sara materiale che merita una casa piu informale.",
     },
-    other_flow_a_title: { en: "Talks and invited presentations", it: "Talk e presentazioni su invito" },
-    other_flow_a_desc: { en: "Add short entries for talks, tutorials, panels, or school lectures.", it: "Aggiungi brevi voci per talk, tutorial, panel o lezioni." },
-    other_flow_b_title: { en: "Side projects or prototypes", it: "Progetti laterali o prototipi" },
-    other_flow_b_desc: { en: "Use this space for experimental tools, demos, or smaller ideas outside formal papers.", it: "Usa questo spazio per strumenti sperimentali, demo o idee piu piccole al di fuori dei paper formali." },
-    other_flow_c_title: { en: "Personal interests", it: "Interessi personali" },
-    other_flow_c_desc: { en: "Music, travel, sport, books, photography, or anything else you want the site to carry.", it: "Musica, viaggi, sport, libri, fotografia o qualsiasi altra cosa tu voglia far emergere nel sito." },
+    other_flow_a_title: { en: "Talks", it: "Talk" },
+    other_flow_a_desc: { en: "Talks, tutorials, and invited presentations.", it: "Talk, tutorial e presentazioni su invito." },
+    other_flow_b_title: { en: "Side projects", it: "Progetti laterali" },
+    other_flow_b_desc: { en: "Smaller prototypes and experimental tooling.", it: "Prototipi piu piccoli e tooling sperimentale." },
+    other_flow_c_title: { en: "Interests", it: "Interessi" },
+    other_flow_c_desc: { en: "Notes that make the site feel a bit more personal.", it: "Note che rendono il sito un po' piu personale." },
   },
 };
 
@@ -182,11 +180,17 @@ const pageMetadata = {
   },
   service: {
     title: { en: "Professional Service | Tommaso Fulcini", it: "Servizio Professionale | Tommaso Fulcini" },
-    description: { en: "Conference and workshop service roles for Tommaso Fulcini.", it: "Ruoli di servizio in conferenze e workshop di Tommaso Fulcini." },
+    description: {
+      en: "Program committee and organizing committee roles for Tommaso Fulcini.",
+      it: "Ruoli di program committee e organizing committee di Tommaso Fulcini.",
+    },
   },
   other: {
     title: { en: "Other | Tommaso Fulcini", it: "Altro | Tommaso Fulcini" },
-    description: { en: "Additional interests and future space for side topics on Tommaso Fulcini's website.", it: "Interessi aggiuntivi e spazio per temi laterali nel sito di Tommaso Fulcini." },
+    description: {
+      en: "Under-construction page for talks, side projects, and lighter material on Tommaso Fulcini's website.",
+      it: "Pagina in costruzione per talk, progetti laterali e contenuti piu leggeri nel sito di Tommaso Fulcini.",
+    },
   },
 };
 
@@ -237,6 +241,7 @@ const getPreferredTheme = () => {
 let currentLanguage = getPreferredLanguage();
 let currentTheme = getPreferredTheme();
 let teachingDataCache = null;
+let serviceDataCache = null;
 
 const translate = (key) => {
   const entry = translations[pageKey]?.[key] ?? translations.common[key];
@@ -374,6 +379,15 @@ const fetchJson = async (url, { optional = false } = {}) => {
   }
 
   return response.json();
+};
+
+const translateServiceRoleType = (roleType) => {
+  const keyByRoleType = {
+    program_committee: "service_role_program_committee",
+    organizing_committee: "service_role_organizing_committee",
+  };
+
+  return roleType ? translate(keyByRoleType[roleType] ?? roleType) : "";
 };
 
 const applyMetadata = () => {
@@ -560,6 +574,15 @@ const loadTeachingData = async () => {
   return teachingDataCache;
 };
 
+const loadServiceData = async () => {
+  if (serviceDataCache) {
+    return serviceDataCache;
+  }
+
+  serviceDataCache = await fetchJson("service-data.json");
+  return serviceDataCache;
+};
+
 const renderTeaching = async () => {
   if (!teachingList) {
     return;
@@ -668,6 +691,99 @@ const renderTeaching = async () => {
   }
 };
 
+const renderService = async () => {
+  if (!serviceList) {
+    return;
+  }
+
+  serviceList.setAttribute("aria-busy", "true");
+
+  try {
+    const data = await loadServiceData();
+    const items = Array.isArray(data.items) ? [...data.items] : [];
+
+    if (serviceUpdatedNote) {
+      const locale = currentLanguage === "it" ? "it-IT" : "en-GB";
+      const formattedDate = data.updatedAt
+        ? new Date(`${data.updatedAt}T00:00:00`).toLocaleDateString(locale, {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          })
+        : "";
+      const sourceLinks = Array.isArray(data.sources)
+        ? data.sources
+            .map(
+              (source) =>
+                `<a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.label)}</a>`
+            )
+            .join(", ")
+        : "";
+
+      serviceUpdatedNote.innerHTML = [
+        formattedDate ? `${escapeHtml(translate("service_updated_prefix"))} ${escapeHtml(formattedDate)}.` : "",
+        sourceLinks ? `${escapeHtml(translate("service_sources_label"))}: ${sourceLinks}.` : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
+    }
+
+    if (items.length === 0) {
+      serviceList.innerHTML = `<p class="news-empty">${escapeHtml(translate("service_empty"))}</p>`;
+      return;
+    }
+
+    const groupedByYear = items.reduce((accumulator, item) => {
+      const year = String(item.year);
+      if (!accumulator.has(year)) {
+        accumulator.set(year, []);
+      }
+      accumulator.get(year).push(item);
+      return accumulator;
+    }, new Map());
+
+    const orderedYears = [...groupedByYear.keys()].sort((left, right) => Number(right) - Number(left));
+
+    serviceList.innerHTML = orderedYears
+      .map((year) => {
+        const cards = groupedByYear
+          .get(year)
+          .map((item) => {
+            const title = getLocalizedTeachingValue(item.title);
+            const roleType = translateServiceRoleType(item.roleType);
+            const actionMarkup = item.url
+              ? `<a class="button button-secondary button-small" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(translate("service_open_entry"))}</a>`
+              : "";
+
+            return `
+              <article class="entry-card reveal is-visible">
+                <div class="publication-head">
+                  <div>
+                    ${roleType ? `<p class="entry-meta">${escapeHtml(roleType)}</p>` : ""}
+                    <h3>${escapeHtml(title)}</h3>
+                  </div>
+                  ${actionMarkup}
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+
+        return `
+          <div class="year-block reveal is-visible">
+            <div class="year-stamp">${escapeHtml(year)}</div>
+            <div class="entry-stack">${cards}</div>
+          </div>
+        `;
+      })
+      .join("");
+  } catch (error) {
+    serviceList.innerHTML = `<p class="news-empty">${escapeHtml(translate("service_load_error"))}</p>`;
+  } finally {
+    serviceList.removeAttribute("aria-busy");
+  }
+};
+
 if (progress) {
   const updateProgress = () => {
     const scrollTop = window.scrollY;
@@ -712,6 +828,7 @@ languageButtons.forEach((button) => {
     renderNews();
     renderPublications();
     void renderTeaching();
+    void renderService();
   });
 });
 
@@ -728,3 +845,4 @@ applyTranslations();
 renderNews();
 renderPublications();
 void renderTeaching();
+void renderService();
