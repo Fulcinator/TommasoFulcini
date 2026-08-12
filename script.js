@@ -62,8 +62,8 @@ const translations = {
     teaching_kicker: { en: "Institutional profiles", it: "Profili istituzionali" },
     teaching_title: { en: "Teaching", it: "Didattica" },
     teaching_lead: {
-      en: "Teaching activity listed by Politecnico di Torino and Universita del Piemonte Orientale across Ph.D., M.Sc., and B.Sc. courses.",
-      it: "Attivita didattica riportata dalle pagine di Politecnico di Torino e Universita del Piemonte Orientale tra dottorato, laurea magistrale e laurea.",
+      en: "Teaching activities carried out at university level.",
+      it: "Attività didattiche svolte a livello universitario.",
     },
     teaching_levels_label: { en: "Levels", it: "Livelli" },
     teaching_levels_value: { en: "Ph.D., M.Sc., and B.Sc.", it: "Dottorato, laurea magistrale e laurea" },
