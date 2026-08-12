@@ -8,6 +8,7 @@ on:
     workflows:
       - Sync News From Issue
       - Sync Publications From IRIS
+      - Sync Teaching From Profiles
     types:
       - completed
   workflow_dispatch:

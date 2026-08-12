@@ -1,0 +1,50 @@
+name: Sync Teaching From Profiles
+
+on:
+  schedule:
+    - cron: "11 5 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-teaching:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Update teaching data
+        run: node scripts/sync-teaching-from-profiles.mjs
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            node scripts/sync-teaching-from-profiles.mjs
+            git add teaching-data.json
+
+            if git diff --cached --quiet; then
+              echo "No teaching changes detected."
+              exit 0
+            fi
+
+            git commit -m "Sync teaching from institutional profiles"
+
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            echo "Push rejected on attempt $attempt. Retrying on top of latest main..."
+          done
+
+          echo "Failed to push teaching update after 3 attempts."
+          exit 1

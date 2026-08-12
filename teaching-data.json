@@ -1,0 +1,314 @@
+{
+  "updatedAt": "2026-08-12",
+  "sources": [
+    {
+      "id": "polito",
+      "label": "Politecnico di Torino profile",
+      "url": "https://www.polito.it/personale?p=tommaso.fulcini"
+    },
+    {
+      "id": "uniupo",
+      "label": "UPOBook profile",
+      "url": "https://upobook.uniupo.it/tommaso.fulcini"
+    }
+  ],
+  "items": [
+    {
+      "id": "polito-2026-reading-writing-understanding-scientific-peer-reviews-for-ict",
+      "academicYear": "2026/27",
+      "yearStart": 2026,
+      "institution": {
+        "it": "Politecnico di Torino",
+        "en": "Politecnico di Torino"
+      },
+      "level": "phd",
+      "courseTitle": {
+        "it": "Reading, Writing & Understanding Scientific Peer Reviews for ICT",
+        "en": "Reading, Writing & Understanding Scientific Peer Reviews for ICT"
+      },
+      "program": {
+        "it": "Ingegneria informatica e dei sistemi",
+        "en": "Computer and Systems Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01XBUIU&p_a_acc=2027",
+      "source": "polito"
+    },
+    {
+      "id": "polito-2026-information-systems",
+      "academicYear": "2026/27",
+      "yearStart": 2026,
+      "institution": {
+        "it": "Politecnico di Torino",
+        "en": "Politecnico di Torino"
+      },
+      "level": "msc",
+      "courseTitle": {
+        "it": "Sistemi informativi",
+        "en": "Information Systems"
+      },
+      "program": {
+        "it": "Ingegneria gestionale",
+        "en": "Management Engineering"
+      },
+      "role": "Titolare del corso",
+      "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=02PDWYC&p_a_acc=2027",
+      "source": "polito"
+    },
+    {
+      "id": "polito-2025-software-engineering-i",
+      "academicYear": "2025/26",
+      "yearStart": 2025,
+      "institution": {
+        "it": "Politecnico di Torino",
+        "en": "Politecnico di Torino"
+      },
+      "level": "msc",
+      "courseTitle": {
+        "it": "Ingegneria del software I",
+        "en": "Software Engineering I"
+      },
+      "program": {
+        "it": "Ingegneria informatica",
+        "en": "Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=01VRYYG&p_a_acc=2026",
+      "source": "polito"
+    },
+    {
+      "id": "polito-2025-programmazione-a-oggetti",
+      "academicYear": "2025/26",
+      "yearStart": 2025,
+      "institution": {
+        "it": "Politecnico di Torino",
+        "en": "Politecnico di Torino"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Programmazione a oggetti",
+        "en": "Object-Oriented Programming"
+      },
+      "program": {
+        "it": "Ingegneria informatica",
+        "en": "Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=09CBIOA&p_a_acc=2026",
+      "source": "polito"
+    },
+    {
+      "id": "uniupo-2025-architetture-computazionali-reti-e-sicurezza-vercelli",
+      "academicYear": "2025/26",
+      "yearStart": 2025,
+      "institution": {
+        "it": "Universita del Piemonte Orientale",
+        "en": "University of Eastern Piedmont"
+      },
+      "courseTitle": {
+        "it": "Architetture computazionali, reti e sicurezza - Vercelli",
+        "en": "Computational Architectures, Networks and Security - Vercelli"
+      },
+      "role": "Professore a contratto",
+      "semester": "second",
+      "credits": 12,
+      "department": {
+        "it": "Dipartimento di Scienze e Innovazione Tecnologica",
+        "en": "Department of Science and Technological Innovation"
+      },
+      "url": "https://of.uniupo.it/syllabus/didattica.php/lang/2025/A116#334298",
+      "source": "uniupo"
+    },
+    {
+      "id": "polito-2024-software-engineering",
+      "academicYear": "2024/25",
+      "yearStart": 2024,
+      "institution": {
+        "it": "Politecnico di Torino",
+        "en": "Politecnico di Torino"
+      },
+      "level": "msc",
+      "courseTitle": {
+        "it": "Ingegneria del software",
+        "en": "Software Engineering"
+      },
+      "program": {
+        "it": "Ingegneria informatica",
+        "en": "Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=04GSPOV&p_a_acc=2025",
+      "source": "polito"
+    },
+    {
+      "id": "uniupo-2024-architetture-computazionali-reti-e-sicurezza-vercelli",
+      "academicYear": "2024/25",
+      "yearStart": 2024,
+      "institution": {
+        "it": "Universita del Piemonte Orientale",
+        "en": "University of Eastern Piedmont"
+      },
+      "courseTitle": {
+        "it": "Architetture computazionali, reti e sicurezza - Vercelli",
+        "en": "Computational Architectures, Networks and Security - Vercelli"
+      },
+      "role": "Professore a contratto",
+      "semester": "second",
+      "credits": 12,
+      "department": {
+        "it": "Dipartimento di Scienze e Innovazione Tecnologica",
+        "en": "Department of Science and Technological Innovation"
+      },
+      "url": "https://of.uniupo.it/syllabus/didattica.php/lang/2024/A071#287507",
+      "source": "uniupo"
+    },
+    {
+      "id": "polito-2023-software-engineering",
+      "academicYear": "2023/24",
+      "yearStart": 2023,
+      "institution": {
+        "it": "Politecnico di Torino",
+        "en": "Politecnico di Torino"
+      },
+      "level": "msc",
+      "courseTitle": {
+        "it": "Ingegneria del software",
+        "en": "Software Engineering"
+      },
+      "program": {
+        "it": "Ingegneria informatica",
+        "en": "Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=04GSPOV&p_a_acc=2024",
+      "source": "polito"
+    },
+    {
+      "id": "polito-2023-ingegneria-del-software",
+      "academicYear": "2023/24",
+      "yearStart": 2023,
+      "institution": {
+        "it": "Politecnico di Torino",
+        "en": "Politecnico di Torino"
+      },
+      "level": "msc",
+      "courseTitle": {
+        "it": "Ingegneria del software",
+        "en": "Software Engineering"
+      },
+      "program": {
+        "it": "Ingegneria informatica",
+        "en": "Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=05BIDOV&p_a_acc=2024",
+      "source": "polito"
+    },
+    {
+      "id": "polito-2023-sistemi-informativi-aziendali",
+      "academicYear": "2023/24",
+      "yearStart": 2023,
+      "institution": {
+        "it": "Politecnico di Torino",
+        "en": "Politecnico di Torino"
+      },
+      "level": "msc",
+      "courseTitle": {
+        "it": "Sistemi informativi aziendali",
+        "en": "Business Information Systems"
+      },
+      "program": {
+        "it": "Ingegneria gestionale",
+        "en": "Management Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=02CIXPG&p_a_acc=2024",
+      "source": "polito"
+    },
+    {
+      "id": "uniupo-2023-architetture-computazionali-reti-e-sicurezza-vercelli",
+      "academicYear": "2023/24",
+      "yearStart": 2023,
+      "institution": {
+        "it": "Universita del Piemonte Orientale",
+        "en": "University of Eastern Piedmont"
+      },
+      "courseTitle": {
+        "it": "Architetture computazionali, reti e sicurezza - Vercelli",
+        "en": "Computational Architectures, Networks and Security - Vercelli"
+      },
+      "role": "Professore a contratto",
+      "semester": "second",
+      "credits": 12,
+      "department": {
+        "it": "Dipartimento di Scienze e Innovazione Tecnologica",
+        "en": "Department of Science and Technological Innovation"
+      },
+      "url": "https://of.uniupo.it/syllabus/didattica.php/lang/2023/A071#238060",
+      "source": "uniupo"
+    },
+    {
+      "id": "polito-2022-programmazione-a-oggetti",
+      "academicYear": "2022/23",
+      "yearStart": 2022,
+      "institution": {
+        "it": "Politecnico di Torino",
+        "en": "Politecnico di Torino"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Programmazione a oggetti",
+        "en": "Object-Oriented Programming"
+      },
+      "program": {
+        "it": "Ingegneria informatica",
+        "en": "Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=09CBIOA&p_a_acc=2023",
+      "source": "polito"
+    },
+    {
+      "id": "polito-2022-sistemi-informativi-aziendali",
+      "academicYear": "2022/23",
+      "yearStart": 2022,
+      "institution": {
+        "it": "Politecnico di Torino",
+        "en": "Politecnico di Torino"
+      },
+      "level": "msc",
+      "courseTitle": {
+        "it": "Sistemi informativi aziendali",
+        "en": "Business Information Systems"
+      },
+      "program": {
+        "it": "Ingegneria gestionale",
+        "en": "Management Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=02CIXPG&p_a_acc=2023",
+      "source": "polito"
+    },
+    {
+      "id": "polito-2021-sistemi-informativi-aziendali",
+      "academicYear": "2021/22",
+      "yearStart": 2021,
+      "institution": {
+        "it": "Politecnico di Torino",
+        "en": "Politecnico di Torino"
+      },
+      "level": "msc",
+      "courseTitle": {
+        "it": "Sistemi informativi aziendali",
+        "en": "Business Information Systems"
+      },
+      "program": {
+        "it": "Ingegneria gestionale",
+        "en": "Management Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=02CIXPG&p_a_acc=2022",
+      "source": "polito"
+    }
+  ]
+}

@@ -2,12 +2,15 @@ const progress = document.querySelector(".scroll-progress span");
 const revealItems = document.querySelectorAll(".reveal");
 const newsList = document.querySelector("#news-list");
 const publicationsList = document.querySelector("#publications-list");
+const teachingList = document.querySelector("#teaching-list");
+const teachingUpdatedNote = document.querySelector("#teaching-updated");
 const languageButtons = document.querySelectorAll("[data-lang-option]");
 const themeToggleButton = document.querySelector("[data-theme-toggle]");
 const pageKey = document.body.dataset.page || "home";
 
 const languageStorageKey = "site-language";
 const themeStorageKey = "site-theme";
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const translations = {
   common: {
@@ -56,19 +59,31 @@ const translations = {
     },
   },
   teaching: {
-    teaching_kicker: { en: "Politecnico di Torino", it: "Politecnico di Torino" },
+    teaching_kicker: { en: "Institutional profiles", it: "Profili istituzionali" },
     teaching_title: { en: "Teaching", it: "Didattica" },
     teaching_lead: {
-      en: "Teaching activity across computer engineering and management engineering courses at Politecnico di Torino.",
-      it: "Attivita didattica nei corsi di ingegneria informatica e ingegneria gestionale al Politecnico di Torino.",
+      en: "Teaching activity listed by Politecnico di Torino and Universita del Piemonte Orientale across Ph.D., M.Sc., and B.Sc. courses.",
+      it: "Attivita didattica riportata dalle pagine di Politecnico di Torino e Universita del Piemonte Orientale tra dottorato, laurea magistrale e laurea.",
     },
     teaching_levels_label: { en: "Levels", it: "Livelli" },
-    teaching_levels_value: { en: "M.Sc. and B.Sc.", it: "Laurea magistrale e laurea" },
+    teaching_levels_value: { en: "Ph.D., M.Sc., and B.Sc.", it: "Dottorato, laurea magistrale e laurea" },
     teaching_role_label: { en: "Role", it: "Ruolo" },
-    teaching_role_value: { en: "Teaching collaborator", it: "Collaboratore alla didattica" },
-    teaching_institution_label: { en: "Institution", it: "Istituzione" },
-    teaching_institution_value: { en: "Politecnico di Torino", it: "Politecnico di Torino" },
+    teaching_role_value: { en: "Course owner, teaching collaborator, contract professor", it: "Titolare del corso, collaboratore del corso, professore a contratto" },
+    teaching_institution_label: { en: "Institutions", it: "Istituzioni" },
+    teaching_institution_value: { en: "Politecnico di Torino and Universita del Piemonte Orientale", it: "Politecnico di Torino e Universita del Piemonte Orientale" },
     teaching_collaborator_sentence: { en: "Teaching collaborator.", it: "Collaboratore alla didattica." },
+    teaching_updated_prefix: { en: "Updated from institutional pages on", it: "Aggiornato dalle pagine istituzionali il" },
+    teaching_sources_label: { en: "Sources", it: "Fonti" },
+    teaching_course_page: { en: "Course page", it: "Pagina del corso" },
+    teaching_empty: { en: "No teaching entries available.", it: "Nessun insegnamento disponibile." },
+    teaching_load_error: { en: "Teaching data could not be loaded.", it: "Impossibile caricare i dati della didattica." },
+    teaching_level_phd: { en: "Ph.D.", it: "Dottorato" },
+    teaching_level_msc: { en: "M.Sc.", it: "Laurea magistrale" },
+    teaching_level_bsc: { en: "B.Sc.", it: "Laurea" },
+    teaching_role_course_owner: { en: "Course owner", it: "Titolare del corso" },
+    teaching_role_teaching_collaborator: { en: "Teaching collaborator", it: "Collaboratore del corso" },
+    teaching_role_contract_professor: { en: "Contract professor", it: "Professore a contratto" },
+    teaching_semester_second: { en: "Second semester", it: "Secondo semestre" },
   },
   service: {
     service_kicker: { en: "Academic community", it: "Comunita accademica" },
@@ -160,7 +175,10 @@ const pageMetadata = {
   },
   teaching: {
     title: { en: "Teaching | Tommaso Fulcini", it: "Didattica | Tommaso Fulcini" },
-    description: { en: "Teaching activity for Tommaso Fulcini at Politecnico di Torino.", it: "Attivita didattica di Tommaso Fulcini al Politecnico di Torino." },
+    description: {
+      en: "Teaching activity for Tommaso Fulcini at Politecnico di Torino and Universita del Piemonte Orientale.",
+      it: "Attivita didattica di Tommaso Fulcini tra Politecnico di Torino e Universita del Piemonte Orientale.",
+    },
   },
   service: {
     title: { en: "Professional Service | Tommaso Fulcini", it: "Servizio Professionale | Tommaso Fulcini" },
@@ -183,6 +201,21 @@ const escapeHtml = (value) =>
 const emphasizeOwnName = (authors) =>
   escapeHtml(authors).replaceAll("Tommaso Fulcini", "<strong>Tommaso Fulcini</strong>");
 
+const unwrapMarkdownFence = (value) => {
+  const normalized = String(value ?? "").replace(/\r/g, "").trim();
+  const fencedMatch = normalized.match(/^```(?:[\w-]+)?\n?([\s\S]*?)\n?```$/);
+  if (fencedMatch) {
+    return fencedMatch[1].trim();
+  }
+
+  const inlineCodeMatch = normalized.match(/^`([^`]+)`$/s);
+  if (inlineCodeMatch) {
+    return inlineCodeMatch[1].trim();
+  }
+
+  return normalized;
+};
+
 const getPreferredLanguage = () => {
   const storedLanguage = window.localStorage.getItem(languageStorageKey);
   if (storedLanguage === "en" || storedLanguage === "it") {
@@ -203,6 +236,7 @@ const getPreferredTheme = () => {
 
 let currentLanguage = getPreferredLanguage();
 let currentTheme = getPreferredTheme();
+let teachingDataCache = null;
 
 const translate = (key) => {
   const entry = translations[pageKey]?.[key] ?? translations.common[key];
@@ -241,6 +275,105 @@ const translatePublicationMeta = (meta) => {
     .replace(/^Book chapter\b/, "Capitolo di libro")
     .replace(/^Publication\b/, "Pubblicazione")
     .replace(/^Report\b/, "Rapporto");
+};
+
+const translateTeachingLevel = (level) => {
+  const keyByLevel = {
+    phd: "teaching_level_phd",
+    msc: "teaching_level_msc",
+    bsc: "teaching_level_bsc",
+  };
+
+  return level ? translate(keyByLevel[level] ?? level) : "";
+};
+
+const translateTeachingRole = (role) => {
+  const roleKeyByValue = {
+    "Titolare del corso": "teaching_role_course_owner",
+    "Collaboratore del corso": "teaching_role_teaching_collaborator",
+    "Professore a contratto": "teaching_role_contract_professor",
+  };
+
+  return role ? translate(roleKeyByValue[role] ?? role) : "";
+};
+
+const translateTeachingSemester = (semester) => {
+  const keyBySemester = {
+    second: "teaching_semester_second",
+  };
+
+  return semester ? translate(keyBySemester[semester] ?? semester) : "";
+};
+
+const getLocalizedTeachingValue = (value) => {
+  if (value && typeof value === "object" && !Array.isArray(value)) {
+    return value[currentLanguage] ?? value.en ?? value.it ?? "";
+  }
+
+  return value ?? "";
+};
+
+const applyTeachingItemOverrides = (item, overrides) => {
+  if (!overrides || typeof overrides !== "object" || Array.isArray(overrides)) {
+    return item;
+  }
+
+  return {
+    ...item,
+    ...overrides,
+    overrides,
+  };
+};
+
+const sortTeachingItems = (items) =>
+  [...items].sort((left, right) => {
+    if ((right.yearStart ?? 0) !== (left.yearStart ?? 0)) {
+      return (right.yearStart ?? 0) - (left.yearStart ?? 0);
+    }
+
+    const leftInstitution = getLocalizedTeachingValue(left.institution);
+    const rightInstitution = getLocalizedTeachingValue(right.institution);
+    const institutionOrder = leftInstitution.localeCompare(rightInstitution, "it");
+    if (institutionOrder !== 0) {
+      return institutionOrder;
+    }
+
+    const leftTitle = getLocalizedTeachingValue(left.courseTitle);
+    const rightTitle = getLocalizedTeachingValue(right.courseTitle);
+    return leftTitle.localeCompare(rightTitle, "it");
+  });
+
+const normalizeTeachingOverridesPayload = (payload) => ({
+  items:
+    payload?.items && typeof payload.items === "object" && !Array.isArray(payload.items)
+      ? payload.items
+      : {},
+  manualItems: Array.isArray(payload?.manualItems) ? payload.manualItems : [],
+});
+
+const mergeTeachingDataWithOverrides = (teachingData, overridesPayload) => {
+  const syncedItems = Array.isArray(teachingData?.items) ? teachingData.items : [];
+  const overrides = normalizeTeachingOverridesPayload(overridesPayload);
+  const mergedItems = syncedItems.map((item) => applyTeachingItemOverrides(item, overrides.items[item.id]));
+  const manualItems = overrides.manualItems.map((item) => applyTeachingItemOverrides(item, item.overrides));
+
+  return {
+    ...teachingData,
+    items: sortTeachingItems([...mergedItems, ...manualItems]),
+  };
+};
+
+const fetchJson = async (url, { optional = false } = {}) => {
+  const response = await fetch(url, { cache: "no-store" });
+  if (!response.ok) {
+    if (optional && response.status === 404) {
+      return null;
+    }
+
+    throw new Error(`${url} request failed: ${response.status}`);
+  }
+
+  return response.json();
 };
 
 const applyMetadata = () => {
@@ -308,6 +441,7 @@ const renderNews = () => {
         month: "short",
         year: "numeric",
       });
+      const normalizedDetails = item.details ? unwrapMarkdownFence(item.details).replace(/\n+/g, " ").trim() : "";
 
       const linkMarkup =
         item.link && item.linkLabel
@@ -324,7 +458,7 @@ const renderNews = () => {
           <div class="news-body">
             <p class="news-type">${escapeHtml(translateNewsType(item.type))}</p>
             <h3>${escapeHtml(item.title)}</h3>
-            ${item.details ? `<p>${escapeHtml(item.details)}</p>` : ""}
+            ${normalizedDetails ? `<p>${escapeHtml(normalizedDetails)}</p>` : ""}
             ${actions ? `<div class="news-link">${actions}</div>` : ""}
           </div>
         </article>
@@ -412,6 +546,128 @@ const renderPublications = () => {
   };
 };
 
+const loadTeachingData = async () => {
+  if (teachingDataCache) {
+    return teachingDataCache;
+  }
+
+  const [teachingData, teachingOverrides] = await Promise.all([
+    fetchJson("teaching-data.json"),
+    fetchJson("teaching-overrides.json", { optional: true }),
+  ]);
+
+  teachingDataCache = mergeTeachingDataWithOverrides(teachingData, teachingOverrides);
+  return teachingDataCache;
+};
+
+const renderTeaching = async () => {
+  if (!teachingList) {
+    return;
+  }
+
+  teachingList.setAttribute("aria-busy", "true");
+
+  try {
+    const data = await loadTeachingData();
+    const items = Array.isArray(data.items) ? [...data.items] : [];
+
+    if (teachingUpdatedNote) {
+      const locale = currentLanguage === "it" ? "it-IT" : "en-GB";
+      const formattedDate = data.updatedAt
+        ? new Date(`${data.updatedAt}T00:00:00`).toLocaleDateString(locale, {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          })
+        : "";
+      const sourceLinks = Array.isArray(data.sources)
+        ? data.sources
+            .map(
+              (source) =>
+                `<a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.label)}</a>`
+            )
+            .join(", ")
+        : "";
+
+      teachingUpdatedNote.innerHTML = [
+        formattedDate ? `${escapeHtml(translate("teaching_updated_prefix"))} ${escapeHtml(formattedDate)}.` : "",
+        sourceLinks ? `${escapeHtml(translate("teaching_sources_label"))}: ${sourceLinks}.` : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
+    }
+
+    if (items.length === 0) {
+      teachingList.innerHTML = `<p class="news-empty">${escapeHtml(translate("teaching_empty"))}</p>`;
+      return;
+    }
+
+    const groupedByYear = items.reduce((accumulator, item) => {
+      const year = item.academicYear;
+      if (!accumulator.has(year)) {
+        accumulator.set(year, []);
+      }
+      accumulator.get(year).push(item);
+      return accumulator;
+    }, new Map());
+
+    const orderedYears = [...groupedByYear.keys()].sort((left, right) => {
+      const leftYear = Number(String(left).slice(0, 4));
+      const rightYear = Number(String(right).slice(0, 4));
+      return rightYear - leftYear;
+    });
+
+    teachingList.innerHTML = orderedYears
+      .map((year) => {
+        const cards = groupedByYear
+          .get(year)
+          .map((item) => {
+            const institution = getLocalizedTeachingValue(item.institution);
+            const courseTitle = getLocalizedTeachingValue(item.courseTitle);
+            const program = getLocalizedTeachingValue(item.program);
+            const department = getLocalizedTeachingValue(item.department);
+            const metaParts = [institution, translateTeachingLevel(item.level)].filter(Boolean);
+            const detailParts = [
+              translateTeachingRole(item.role),
+              translateTeachingSemester(item.semester),
+              item.credits ? `${item.credits} CFU` : "",
+              department,
+            ].filter(Boolean);
+            const actionMarkup = item.url
+              ? `<a class="button button-secondary button-small" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(translate("teaching_course_page"))}</a>`
+              : "";
+
+            return `
+              <article class="entry-card teaching-card reveal is-visible">
+                <div class="publication-head">
+                  <div>
+                    ${metaParts.length ? `<p class="entry-meta">${escapeHtml(metaParts.join(" · "))}</p>` : ""}
+                    <h3>${escapeHtml(courseTitle)}</h3>
+                  </div>
+                  ${actionMarkup}
+                </div>
+                ${program ? `<p class="teaching-program">${escapeHtml(program)}</p>` : ""}
+                ${detailParts.length ? `<p class="teaching-facts">${escapeHtml(detailParts.join(" · "))}</p>` : ""}
+              </article>
+            `;
+          })
+          .join("");
+
+        return `
+          <div class="year-block reveal is-visible">
+            <div class="year-stamp">${escapeHtml(year)}</div>
+            <div class="entry-stack">${cards}</div>
+          </div>
+        `;
+      })
+      .join("");
+  } catch (error) {
+    teachingList.innerHTML = `<p class="news-empty">${escapeHtml(translate("teaching_load_error"))}</p>`;
+  } finally {
+    teachingList.removeAttribute("aria-busy");
+  }
+};
+
 if (progress) {
   const updateProgress = () => {
     const scrollTop = window.scrollY;
@@ -426,6 +682,9 @@ if (progress) {
 }
 
 if (revealItems.length > 0) {
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+  } else {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -442,6 +701,7 @@ if (revealItems.length > 0) {
   );
 
   revealItems.forEach((item) => observer.observe(item));
+  }
 }
 
 languageButtons.forEach((button) => {
@@ -451,6 +711,7 @@ languageButtons.forEach((button) => {
     applyTranslations();
     renderNews();
     renderPublications();
+    void renderTeaching();
   });
 });
 
@@ -466,3 +727,4 @@ applyTheme();
 applyTranslations();
 renderNews();
 renderPublications();
+void renderTeaching();

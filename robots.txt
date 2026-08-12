@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fulcinator.github.io/TommasoFulcini/sitemap.xml

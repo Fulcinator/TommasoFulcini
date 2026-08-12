@@ -9,6 +9,9 @@ Static multipage personal site prepared for GitHub Pages.
 - `publications-data.js`: local publication data and BibTeX entries
 - `scripts/sync-publications-from-iris.mjs`: IRIS import script for new publications
 - `teaching.html`: teaching page
+- `teaching-data.json`: local teaching data fetched from institutional profile pages and open to manual additions
+- `teaching-overrides.json`: local overrides and fully manual teaching entries
+- `scripts/sync-teaching-from-profiles.mjs`: monthly teaching sync script
 - `service.html`: professional service page
 - `other.html`: additional interests page
 - `styles.css`: shared styling
@@ -18,6 +21,7 @@ Static multipage personal site prepared for GitHub Pages.
 - `.github/ISSUE_TEMPLATE/news.yml`: issue form for submitting news
 - `.github/workflows/sync-news-from-issue.yml`: workflow that publishes issue submissions
 - `.github/workflows/sync-publications-from-iris.yml`: weekly workflow that imports new IRIS publications
+- `.github/workflows/sync-teaching-from-profiles.yml`: monthly workflow that refreshes teaching data
 - `.github/workflows/deploy.yml`: GitHub Pages deployment workflow
 
 ## Publish on GitHub Pages
@@ -59,6 +63,16 @@ If you use a different repository name, GitHub Pages will publish it under:
 - Each publication entry includes a `bibtex` field used by the page's `Copy BibTeX` button.
 - New IRIS publications can be imported automatically by the workflow in `.github/workflows/sync-publications-from-iris.yml`.
 - The IRIS sync runs weekly every Monday at 04:17 UTC and can also be started manually with `workflow_dispatch`.
+- The teaching page is rendered from `teaching-data.json`, which is refreshed from the official Politecnico di Torino and UPO profile pages.
+- Manual edits should now go into `teaching-overrides.json`, while `teaching-data.json` is treated as generated output.
+- The teaching page also reads `teaching-overrides.json` directly, so manual additions appear on the site as soon as both files are published.
+- The teaching sync merges new remote data into the existing JSON instead of rebuilding it from scratch.
+- Extra fields added manually to an existing teaching item are preserved across sync runs.
+- If you add an `overrides` object to an existing teaching item, its values take precedence over the synchronized ones.
+- Teaching items present only in the local JSON are preserved, so you can add fully manual entries with your own unique `id`.
+- `teaching-overrides.json.items` is a map keyed by teaching `id` for overriding synchronized fields.
+- `teaching-overrides.json.manualItems` is the place for courses that do not come from Polito or UPO pages.
+- The teaching sync runs monthly on the first day of the month at 05:11 UTC and can also be started manually with `workflow_dispatch`.
 - Homepage news is rendered from `news-data.js`.
 - News can now be submitted through the GitHub issue form defined in `.github/ISSUE_TEMPLATE/news.yml`.
 - The workflow in `.github/workflows/sync-news-from-issue.yml` rewrites `news-data.js`, commits the change, and lets GitHub Pages redeploy from `main`.
@@ -67,4 +81,49 @@ If you use a different repository name, GitHub Pages will publish it under:
   - `Published` means the issue is rendered on the homepage news section.
   - editing a published issue updates the homepage entry.
   - closing the issue, or changing it back to `Draft`, removes it from the homepage.
-- The ORCID footer icon currently points to an ORCID registry search because a verified personal ORCID profile URL was not found in the public sources used here.
+- The ORCID footer icon points to the public ORCID profile URL listed on the Politecnico di Torino profile page.
+
+### Teaching overrides example
+
+```json
+{
+  "items": {
+    "polito-2025-software-engineering-i": {
+      "role": "Titolare del corso",
+      "courseTitle": {
+        "it": "Ingegneria del software I",
+        "en": "Software Engineering I"
+      }
+    }
+  },
+  "manualItems": []
+}
+```
+
+The synchronized item keeps updating, but the fields inside `items.<teaching-id>` win on every sync.
+
+### Manual teaching item example
+
+```json
+{
+  "items": {},
+  "manualItems": [
+    {
+      "id": "summer-school-2026-se-tutorial",
+      "academicYear": "2025/26",
+      "yearStart": 2025,
+      "institution": {
+        "it": "Summer School Example",
+        "en": "Summer School Example"
+      },
+      "courseTitle": {
+        "it": "Tutoriale su software quality",
+        "en": "Tutorial on software quality"
+      },
+      "role": "Invited lecturer",
+      "url": "https://example.org/tutorial",
+      "source": "manual"
+    }
+  ]
+}
+```

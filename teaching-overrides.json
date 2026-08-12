@@ -1,0 +1,105 @@
+{
+  "items": {},
+  "manualItems": [
+    {
+      "id": "ttpu-2026-databases",
+      "academicYear": "2026/27",
+      "yearStart": 2026,
+      "institution": {
+        "it": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan",
+        "en": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Basi di dati",
+        "en": "Databases"
+      },
+      "program": {
+        "it": "Laurea in Ingegneria Informatica",
+        "en": "B.Sc. in Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "source": "manual"
+    },
+    {
+      "id": "ttpu-2025-databases",
+      "academicYear": "2025/26",
+      "yearStart": 2025,
+      "institution": {
+        "it": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan",
+        "en": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Basi di dati",
+        "en": "Databases"
+      },
+      "program": {
+        "it": "Laurea in Ingegneria Informatica",
+        "en": "B.Sc. in Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "source": "manual"
+    },
+    {
+      "id": "ttpu-2024-databases",
+      "academicYear": "2024/25",
+      "yearStart": 2024,
+      "institution": {
+        "it": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan",
+        "en": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Basi di dati",
+        "en": "Databases"
+      },
+      "program": {
+        "it": "Laurea in Ingegneria Informatica",
+        "en": "B.Sc. in Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "source": "manual"
+    },
+    {
+      "id": "ttpu-2023-databases",
+      "academicYear": "2023/24",
+      "yearStart": 2023,
+      "institution": {
+        "it": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan",
+        "en": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Basi di dati",
+        "en": "Databases"
+      },
+      "program": {
+        "it": "Laurea in Ingegneria Informatica",
+        "en": "B.Sc. in Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "source": "manual"
+    },
+    {
+      "id": "ttpu-2022-databases",
+      "academicYear": "2022/23",
+      "yearStart": 2022,
+      "institution": {
+        "it": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan",
+        "en": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Basi di dati",
+        "en": "Databases"
+      },
+      "program": {
+        "it": "Laurea in Ingegneria Informatica",
+        "en": "B.Sc. in Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "source": "manual"
+    }
+  ]
+}

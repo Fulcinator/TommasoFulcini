@@ -49,12 +49,27 @@ const extractSections = (body) => {
   return sections;
 };
 
+const unwrapMarkdownFence = (value) => {
+  const normalized = String(value ?? "").replace(/\r/g, "").trim();
+  const fencedMatch = normalized.match(/^```(?:[\w-]+)?\n?([\s\S]*?)\n?```$/);
+  if (fencedMatch) {
+    return fencedMatch[1].trim();
+  }
+
+  const inlineCodeMatch = normalized.match(/^`([^`]+)`$/s);
+  if (inlineCodeMatch) {
+    return inlineCodeMatch[1].trim();
+  }
+
+  return normalized;
+};
+
 const cleanField = (value) => {
   if (!value) {
     return "";
   }
 
-  const cleaned = value.replace(/\r/g, "").trim();
+  const cleaned = unwrapMarkdownFence(value);
   if (cleaned === "_No response_" || cleaned === "*No response*") {
     return "";
   }
