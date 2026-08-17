@@ -19,7 +19,7 @@ window.newsItems = [
     "date": "2026-06-25",
     "type": "Publication",
     "title": "Talk @ the industrial conference SQF",
-    "details": "```markdown I had a talk at the industrial conference SQF: an intalian conference focused on software testing/quality ```",
+    "details": "I had a talk at the industrial conference SQF: an intalian conference focused on software testing/quality",
     "link": "https://www.swqualityforum.org/evento/conferenza/programma",
     "linkLabel": "More",
     "slides": "slides/26_07_22_OGR_LABBGEN_presentation.pdf",
