@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12",
+  "updatedAt": "2026-09-01",
   "sources": [
     {
       "id": "polito",
@@ -56,6 +56,26 @@
       "source": "polito"
     },
     {
+      "id": "ttpu-2026-databases",
+      "academicYear": "2026/27",
+      "yearStart": 2026,
+      "institution": {
+        "it": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan",
+        "en": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Basi di dati",
+        "en": "Databases"
+      },
+      "program": {
+        "it": "Laurea in Ingegneria Informatica",
+        "en": "B.Sc. in Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "source": "manual"
+    },
+    {
       "id": "polito-2025-software-engineering-i",
       "academicYear": "2025/26",
       "yearStart": 2025,
@@ -96,6 +116,26 @@
       "role": "Collaboratore del corso",
       "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=09CBIOA&p_a_acc=2026",
       "source": "polito"
+    },
+    {
+      "id": "ttpu-2025-databases",
+      "academicYear": "2025/26",
+      "yearStart": 2025,
+      "institution": {
+        "it": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan",
+        "en": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Basi di dati",
+        "en": "Databases"
+      },
+      "program": {
+        "it": "Laurea in Ingegneria Informatica",
+        "en": "B.Sc. in Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "source": "manual"
     },
     {
       "id": "uniupo-2025-architetture-computazionali-reti-e-sicurezza-vercelli",
@@ -139,6 +179,26 @@
       "role": "Collaboratore del corso",
       "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=04GSPOV&p_a_acc=2025",
       "source": "polito"
+    },
+    {
+      "id": "ttpu-2024-databases",
+      "academicYear": "2024/25",
+      "yearStart": 2024,
+      "institution": {
+        "it": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan",
+        "en": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Basi di dati",
+        "en": "Databases"
+      },
+      "program": {
+        "it": "Laurea in Ingegneria Informatica",
+        "en": "B.Sc. in Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "source": "manual"
     },
     {
       "id": "uniupo-2024-architetture-computazionali-reti-e-sicurezza-vercelli",
@@ -226,6 +286,26 @@
       "source": "polito"
     },
     {
+      "id": "ttpu-2023-databases",
+      "academicYear": "2023/24",
+      "yearStart": 2023,
+      "institution": {
+        "it": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan",
+        "en": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Basi di dati",
+        "en": "Databases"
+      },
+      "program": {
+        "it": "Laurea in Ingegneria Informatica",
+        "en": "B.Sc. in Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "source": "manual"
+    },
+    {
       "id": "uniupo-2023-architetture-computazionali-reti-e-sicurezza-vercelli",
       "academicYear": "2023/24",
       "yearStart": 2023,
@@ -288,6 +368,26 @@
       "role": "Collaboratore del corso",
       "url": "https://didattica.polito.it/pls/portal30/sviluppo.guide.visualizza?p_cod_ins=02CIXPG&p_a_acc=2023",
       "source": "polito"
+    },
+    {
+      "id": "ttpu-2022-databases",
+      "academicYear": "2022/23",
+      "yearStart": 2022,
+      "institution": {
+        "it": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan",
+        "en": "Turin Polytechnic University in Tashkent (TTPU), Uzbekistan"
+      },
+      "level": "bsc",
+      "courseTitle": {
+        "it": "Basi di dati",
+        "en": "Databases"
+      },
+      "program": {
+        "it": "Laurea in Ingegneria Informatica",
+        "en": "B.Sc. in Computer Engineering"
+      },
+      "role": "Collaboratore del corso",
+      "source": "manual"
     },
     {
       "id": "polito-2021-sistemi-informativi-aziendali",
