@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01",
+  "updatedAt": "2026-10-01",
   "sources": [
     {
       "id": "polito",
@@ -138,28 +138,6 @@
       "source": "manual"
     },
     {
-      "id": "uniupo-2025-architetture-computazionali-reti-e-sicurezza-vercelli",
-      "academicYear": "2025/26",
-      "yearStart": 2025,
-      "institution": {
-        "it": "Universita del Piemonte Orientale",
-        "en": "University of Eastern Piedmont"
-      },
-      "courseTitle": {
-        "it": "Architetture computazionali, reti e sicurezza - Vercelli",
-        "en": "Computational Architectures, Networks and Security - Vercelli"
-      },
-      "role": "Professore a contratto",
-      "semester": "second",
-      "credits": 12,
-      "department": {
-        "it": "Dipartimento di Scienze e Innovazione Tecnologica",
-        "en": "Department of Science and Technological Innovation"
-      },
-      "url": "https://of.uniupo.it/syllabus/didattica.php/lang/2025/A116#334298",
-      "source": "uniupo"
-    },
-    {
       "id": "polito-2024-software-engineering",
       "academicYear": "2024/25",
       "yearStart": 2024,
@@ -199,28 +177,6 @@
       },
       "role": "Collaboratore del corso",
       "source": "manual"
-    },
-    {
-      "id": "uniupo-2024-architetture-computazionali-reti-e-sicurezza-vercelli",
-      "academicYear": "2024/25",
-      "yearStart": 2024,
-      "institution": {
-        "it": "Universita del Piemonte Orientale",
-        "en": "University of Eastern Piedmont"
-      },
-      "courseTitle": {
-        "it": "Architetture computazionali, reti e sicurezza - Vercelli",
-        "en": "Computational Architectures, Networks and Security - Vercelli"
-      },
-      "role": "Professore a contratto",
-      "semester": "second",
-      "credits": 12,
-      "department": {
-        "it": "Dipartimento di Scienze e Innovazione Tecnologica",
-        "en": "Department of Science and Technological Innovation"
-      },
-      "url": "https://of.uniupo.it/syllabus/didattica.php/lang/2024/A071#287507",
-      "source": "uniupo"
     },
     {
       "id": "polito-2023-software-engineering",
@@ -304,28 +260,6 @@
       },
       "role": "Collaboratore del corso",
       "source": "manual"
-    },
-    {
-      "id": "uniupo-2023-architetture-computazionali-reti-e-sicurezza-vercelli",
-      "academicYear": "2023/24",
-      "yearStart": 2023,
-      "institution": {
-        "it": "Universita del Piemonte Orientale",
-        "en": "University of Eastern Piedmont"
-      },
-      "courseTitle": {
-        "it": "Architetture computazionali, reti e sicurezza - Vercelli",
-        "en": "Computational Architectures, Networks and Security - Vercelli"
-      },
-      "role": "Professore a contratto",
-      "semester": "second",
-      "credits": 12,
-      "department": {
-        "it": "Dipartimento di Scienze e Innovazione Tecnologica",
-        "en": "Department of Science and Technological Innovation"
-      },
-      "url": "https://of.uniupo.it/syllabus/didattica.php/lang/2023/A071#238060",
-      "source": "uniupo"
     },
     {
       "id": "polito-2022-programmazione-a-oggetti",
