@@ -74,6 +74,27 @@ window.publicationsData = [
 }`
   },
   {
+    key: "amalfitano2026fromdetectionrefactoring",
+    year: 2026,
+    meta: "Conference · Svezia",
+    title: "From Detection to Refactoring: A Controlled Study of LLMs for Java Code Smells",
+    authors: [
+      "Domenico Amalfitano",
+      "Filippo Ricca",
+      "Riccardo Coppola",
+      "Tommaso Fulcini",
+      "Damiano Distante"
+    ],
+    irisHandle: "/handle/11583/3016917",
+    sourceUrl: "https://iris.polito.it/handle/11583/3016917",
+    bibtex: `@inproceedings{amalfitano2026fromdetectionrefactoring,
+  author = {Domenico Amalfitano and Filippo Ricca and Riccardo Coppola and Tommaso Fulcini and Damiano Distante},
+  title = {From Detection to Refactoring: A Controlled Study of LLMs for Java Code Smells},
+  booktitle = {Svezia},
+  year = {2026}
+}`
+  },
+  {
     key: "fulcini2026fixyou",
     year: 2026,
     meta: "Workshop · Workshop on Validation, Analysis and Evolution of Software Tests",
