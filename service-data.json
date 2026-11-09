@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02",
+  "updatedAt": "2026-11-09",
   "sources": [
     {
       "id": "researchr",
@@ -8,6 +8,17 @@
     }
   ],
   "items": [
+    {
+      "id": "2027-asta-organizing-committee-asta",
+      "year": 2027,
+      "title": {
+        "it": "ASTA 2027",
+        "en": "ASTA 2027"
+      },
+      "roleType": "organizing_committee",
+      "url": "https://conf.researchr.org/committee/icst-2027/asta-2027-organizing-committee",
+      "source": "researchr"
+    },
     {
       "id": "2027-esec-fse-program-committee-research-papers",
       "year": 2027,
